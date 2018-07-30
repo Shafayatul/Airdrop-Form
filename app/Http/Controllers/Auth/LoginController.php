@@ -63,6 +63,7 @@ class LoginController extends Controller
         } catch (\Exception $e) {
             return redirect('/')->to('/');
         }
+
         // only allow people with @company.com to login
         if(explode("@", $user->email)[1] !== 'gmail.com'){
             return redirect()->to('/');
@@ -77,6 +78,7 @@ class LoginController extends Controller
             $newUser                  = new User;
             $newUser->name            = $user->name;
             $newUser->email           = $user->email;
+            $newUser->avatar           = $user->avatar;
             $newUser->save();
             auth()->login($newUser, true);
         }
