@@ -40,7 +40,7 @@
                     <li class="active">
                         <a href="{!! url('/home') !!}">
                             <i class="material-icons">dashboard</i>
-                            <span>Home</span>
+                            <span>Dashboard</span>
                         </a>
                     </li>
 {{--                     <li>
@@ -59,37 +59,43 @@
                     </li> --}}
                     <li>
                         <a href="{{ url('/zeros/create') }}">
-                            <i class="material-icons">account_balance</i>
+                            <i class="material-icons">spellcheck</i>
                             <span>Step 0 - Initial Level</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url('/ones/create') }}">
-                            <i class="material-icons">account_balance</i>
+                            <i class="material-icons">account_box</i>
                             <span>Step 1 - Low Level</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url('/twos/create') }}">
-                            <i class="material-icons">account_balance</i>
+                            <i class="material-icons">assessment</i>
                             <span>Step 2 - Medium Level</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url('/threes/create') }}">
-                            <i class="material-icons">account_balance</i>
+                            <i class="material-icons">perm_phone_msg</i>
                             <span>Step 3 - Phone varification</span>
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ url('/fours/create') }}">
-                            <i class="material-icons">account_balance</i>
+                            <i class="material-icons">school</i>
                             <span>Step 3 - University varification</span>
                         </a>
                     </li>
 
-
+                    <li>
+                        <a href="{{ url('/fives/create') }}">
+                            <i class="material-icons">camera_roll</i>
+                            <span>Step 4 - Selfi varification</span>
+                        </a>
+                    </li>
+                    
                 </ul>
             </div>
         </aside>
