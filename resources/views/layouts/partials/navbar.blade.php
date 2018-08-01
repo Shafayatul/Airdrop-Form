@@ -75,6 +75,13 @@
                             <span>Step 2 - Medium Level</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ url('/threes/create') }}">
+                            <i class="material-icons">account_balance</i>
+                            <span>Step 3 - Phone varification</span>
+                        </a>
+                    </li>
+
 
                 </ul>
             </div>

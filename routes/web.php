@@ -24,3 +24,6 @@ Route::get('auth/google/callback', 'Auth\LoginController@handleProviderCallback'
 Route::resource('zeros', 'ZerosController');
 Route::resource('ones', 'OnesController');
 Route::resource('twos', 'TwosController');
+
+Route::post('/phone/validation', 'ThreesController@submit_validation');
+Route::resource('threes', 'ThreesController');
