@@ -12,6 +12,10 @@ use Illuminate\Http\Request;
 
 class TwosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *

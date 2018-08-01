@@ -4,7 +4,12 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="{{ URL::asset('images/user.png') }}" width="48" height="48" alt="User" />
+                    
+                    @if($current_user->avatar == null)
+                        <img src="{{ URL::asset('images/user.png') }}" width="48" height="48" alt="User" />
+                    @else
+                        <img src="{{ $current_user->avatar }}" width="48" height="48" alt="User" />
+                    @endif
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{$current_user->name}}</div>
