@@ -77,6 +77,14 @@ class ThreesController extends Controller
             $three = Three::find($three->id);
             $three->is_varified = 1;
             $three->save();
+
+            $user = User::where('id', $user_id)->first();
+            $current_point = $user->point;
+
+            $user = User::find($user_id);
+            $user->point = $current_point+5;
+            $user->save();
+
             return "done";
         }else{
             return view('threes.validation');
