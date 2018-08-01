@@ -82,6 +82,13 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="{{ url('/fours/create') }}">
+                            <i class="material-icons">account_balance</i>
+                            <span>Step 3 - University varification</span>
+                        </a>
+                    </li>
+
 
                 </ul>
             </div>

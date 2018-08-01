@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Four;
+use Illuminate\Http\Request;
 use Auth;
 use App\User;
-use App\Three;
-use Illuminate\Http\Request;
-
-class ThreesController extends Controller
+class FoursController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,14 +22,21 @@ class ThreesController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $threes = Three::where('phone_number', 'LIKE', "%$keyword%")
-                ->orWhere('code', 'LIKE', "%$keyword%")
+            $fours = Four::where('email_address', 'LIKE', "%$keyword%")
+                ->orWhere('name', 'LIKE', "%$keyword%")
+                ->orWhere('university_email_address', 'LIKE', "%$keyword%")
+                ->orWhere('university_website', 'LIKE', "%$keyword%")
+                ->orWhere('undergraduate_major', 'LIKE', "%$keyword%")
+                ->orWhere('graduation_year', 'LIKE', "%$keyword%")
+                ->orWhere('university_ambassadors', 'LIKE', "%$keyword%")
+                ->orWhere('ethereum_address', 'LIKE', "%$keyword%")
+                ->orWhere('terms_and_privacy_policy', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $threes = Three::latest()->paginate($perPage);
+            $fours = Four::latest()->paginate($perPage);
         }
 
-        return view('threes.index', compact('threes'));
+        return view('fours.index', compact('fours'));
     }
 
     /**
@@ -41,12 +47,12 @@ class ThreesController extends Controller
     public function create()
     {
         $user_id = Auth::id();
-        $count = Three::where('user_id', $user_id)->count();
+        $count = Four::where('user_id', $user_id)->count();
         if ($count == 0) {
-            return view('threes.create');
+            return view('fours.create');
         }else{
-            $three = Three::where('user_id', $user_id)->first();
-            return redirect(route('threes.edit', array('id' => $three->id)));
+            $four = Four::where('user_id', $user_id)->first();
+            return redirect(route('fours.edit', array('id' => $four->id)));
         }
     }
 
@@ -59,42 +65,21 @@ class ThreesController extends Controller
      */
     public function store(Request $request)
     {
+        $user_id = Auth::user()->id;
         
         $requestData = $request->all();
-        $user_id = Auth::user()->id;
-        $code = rand ( 1000 , 9999 );
-
-        $three = Three::create($requestData + ['user_id' => $user_id, 'code' => $code]);
-        return view('threes.validation');
-    }    
-
-    public function submit_validation(Request $request)
-    {        
-        $user_id = Auth::user()->id;
-        $three = Three::where('user_id', $user_id)->first();
         
-        if($request->code == $three->code){
-            $three = Three::find($three->id);
-            $three->is_varified = 1;
-            $three->save();
+        Four::create($requestData + ['user_id' => $user_id]);
 
+        $user = User::where('id', $user_id)->first();
+        $current_point = $user->point;
 
-            //*** VOIP varification still not done
-            $user = User::where('id', $user_id)->first();
-            $current_point = $user->point;
+        $user = User::find($user_id);
+        $user->point = $current_point+5;
+        $user->save();
 
-            $user = User::find($user_id);
-            $user->point = $current_point+5;
-            $user->save();
-
-            return "done";
-        }else{
-            return view('threes.validation');
-        }
-
-        
+        return redirect('fours')->with('flash_message', 'Four added!');
     }
-
 
     /**
      * Display the specified resource.
@@ -105,9 +90,9 @@ class ThreesController extends Controller
      */
     public function show($id)
     {
-        $three = Three::findOrFail($id);
+        $four = Four::findOrFail($id);
 
-        return view('threes.show', compact('three'));
+        return view('fours.show', compact('four'));
     }
 
     /**
@@ -119,9 +104,9 @@ class ThreesController extends Controller
      */
     public function edit($id)
     {
-        $three = Three::findOrFail($id);
+        $four = Four::findOrFail($id);
 
-        return view('threes.edit', compact('three'));
+        return view('fours.edit', compact('four'));
     }
 
     /**
@@ -137,10 +122,10 @@ class ThreesController extends Controller
         
         $requestData = $request->all();
         
-        $three = Three::findOrFail($id);
-        $three->update($requestData);
+        $four = Four::findOrFail($id);
+        $four->update($requestData);
 
-        return redirect('threes')->with('flash_message', 'Three updated!');
+        return redirect('fours')->with('flash_message', 'Four updated!');
     }
 
     /**
@@ -152,8 +137,8 @@ class ThreesController extends Controller
      */
     public function destroy($id)
     {
-        Three::destroy($id);
+        Four::destroy($id);
 
-        return redirect('threes')->with('flash_message', 'Three deleted!');
+        return redirect('fours')->with('flash_message', 'Four deleted!');
     }
 }
