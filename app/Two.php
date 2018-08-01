@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Zero extends Model
+class Two extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'zeros';
+    protected $table = 'twos';
 
     /**
     * The database primary key value.
@@ -25,7 +25,7 @@ class Zero extends Model
      *
      * @var array
      */
-    protected $fillable = ['ethereum_address', 'ip', 'user_id'];
+    protected $fillable = ['privacy', 'type', 'number', 'user_id', 'point'];
 
     
 }

@@ -38,26 +38,39 @@
                             <span>Home</span>
                         </a>
                     </li>
-                    <li>
+{{--                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">question_answer</i>
-                            <span>Ticket For Client</span>
+                            <span>Level 0</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{{url('/tickets/create')}}">Add Ticket</a>
+                                <a href="{{url('/zeros/create')}}">Add Ticket</a>
                             </li>
                             <li>
                                 <a href="{{url('/tickets/index')}}">My Tickets</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li>
-                        <a href="{{ url('/domain-contacts') }}">
+                        <a href="{{ url('/zeros/create') }}">
                             <i class="material-icons">account_balance</i>
-                            <span>Manage Address Book</span>
+                            <span>Step 0 - Initial Level</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ url('/ones/create') }}">
+                            <i class="material-icons">account_balance</i>
+                            <span>Step 1 - Low Level</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/twos/create') }}">
+                            <i class="material-icons">account_balance</i>
+                            <span>Step 2 - Medium Level</span>
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </aside>

@@ -5,7 +5,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>Initial Form</h2>
+                <h2>Level Low Form</h2>
             </div>
             <!-- Input -->
             <div class="row clearfix">
@@ -13,7 +13,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Update Initial Form
+                                Insert Level Low Form
                             </h2>
                         </div>
                         <div class="body">
@@ -38,14 +38,9 @@
                                 </ul>
                             @endif
 
-                            {!! Form::model($zero, [
-                                'method' => 'PATCH',
-                                'url' => ['/zeros', $zero->id],
-                                'class' => 'form-horizontal',
-                                'files' => true
-                            ]) !!}
+                            {!! Form::open(['url' => '/ones', 'class' => 'form-horizontal', 'files' => true]) !!}
 
-                            @include ('zeros.form', ['submitButtonText' => 'Update'])
+                            @include ('ones.form')
 
                             {!! Form::close() !!}
 

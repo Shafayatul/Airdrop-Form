@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('auth/google', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/google/callback', 'Auth\LoginController@handleProviderCallback');
 Route::resource('zeros', 'ZerosController');
+Route::resource('ones', 'OnesController');
+Route::resource('twos', 'TwosController');

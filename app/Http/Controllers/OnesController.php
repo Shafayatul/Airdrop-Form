@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Validation\Rule;
 
 use Auth;
-use App\Zero;
+use App\One;
+use App\User;
 use Illuminate\Http\Request;
 
-class ZerosController extends Controller
+class OnesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,14 +23,14 @@ class ZerosController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $zeros = Zero::where('ethereum_address', 'LIKE', "%$keyword%")
-                ->orWhere('ip', 'LIKE', "%$keyword%")
+            $ones = One::where('name', 'LIKE', "%$keyword%")
+                ->orWhere('address', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $zeros = Zero::latest()->paginate($perPage);
+            $ones = One::latest()->paginate($perPage);
         }
 
-        return view('zeros.index', compact('zeros'));
+        return view('ones.index', compact('ones'));
     }
 
     /**
@@ -41,12 +41,12 @@ class ZerosController extends Controller
     public function create()
     {
         $user_id = Auth::id();
-        $count = Zero::where('user_id', $user_id)->count();
+        $count = One::where('user_id', $user_id)->count();
         if ($count == 0) {
-            return view('zeros.create');
+            return view('ones.create');
         }else{
-            $zero = Zero::where('user_id', $user_id)->first();
-            return redirect(route('zeros.edit', array('id' => $zero->id)));
+            $one = One::where('user_id', $user_id)->first();
+            return redirect(route('ones.edit', array('id' => $one->id)));
         }
     }
 
@@ -60,15 +60,18 @@ class ZerosController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'ethereum_address' => ["required" , "regex:/^0x/"],
-            'ip' => ["required", "unique:zeros", "ip"],
+            'name' => ["required"],
+            'address' => ["required"],
         ]);
-            
         $requestData = $request->all();
-        
-        Zero::create($requestData + ['user_id' => Auth::user()->id]);
+        $user_id = Auth::user()->id;
+        One::create($requestData + ['user_id' => $user_id]);
 
-        return redirect('zeros')->with('flash_message', 'Zero added!');
+        $user = User::find($user_id);
+        $user->point = 0.3;
+        $user->save();
+
+        return redirect('ones')->with('flash_message', 'One added!');
     }
 
     /**
@@ -80,9 +83,9 @@ class ZerosController extends Controller
      */
     public function show($id)
     {
-        $zero = Zero::findOrFail($id);
+        $one = One::findOrFail($id);
 
-        return view('zeros.show', compact('zero'));
+        return view('ones.show', compact('one'));
     }
 
     /**
@@ -94,9 +97,9 @@ class ZerosController extends Controller
      */
     public function edit($id)
     {
-        $zero = Zero::findOrFail($id);
+        $one = One::findOrFail($id);
 
-        return view('zeros.edit', compact('zero'));
+        return view('ones.edit', compact('one'));
     }
 
     /**
@@ -109,18 +112,17 @@ class ZerosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         $validatedData = $request->validate([
-            'ethereum_address' => ["required" , "regex:/^0x/"],
-            'ip' => ["required", Rule::unique('zeros')->ignore($id), "ip"],
+            'name' => ["required"],
+            'address' => ["required"],
         ]);
 
         $requestData = $request->all();
         
-        $zero = Zero::findOrFail($id);
-        $zero->update($requestData);
+        $one = One::findOrFail($id);
+        $one->update($requestData);
 
-        return redirect('zeros')->with('flash_message', 'Zero updated!');
+        return redirect('ones')->with('flash_message', 'One updated!');
     }
 
     /**
@@ -132,8 +134,8 @@ class ZerosController extends Controller
      */
     public function destroy($id)
     {
-        Zero::destroy($id);
+        One::destroy($id);
 
-        return redirect('zeros')->with('flash_message', 'Zero deleted!');
+        return redirect('ones')->with('flash_message', 'One deleted!');
     }
 }
