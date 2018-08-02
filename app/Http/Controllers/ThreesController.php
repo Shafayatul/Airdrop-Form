@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Twilio;
 use Auth;
 use App\User;
 use App\Three;
 use Illuminate\Http\Request;
+use Twilio\Rest\Client;
 
 class ThreesController extends Controller
 {
@@ -43,6 +44,20 @@ class ThreesController extends Controller
      *
      * @return \Illuminate\View\View
      */
+    public function twilio_sms($to, $msg)
+    {
+        $sid    = "AC0a282e55cc48a15113a29d840a346593";
+        $token  = "0ad8e8d48a2d73be91c98592f1cad262";
+        $twilio = new Client($sid, $token);
+
+        $message = $twilio->messages
+                          ->create($to,
+                                   array("from" => "+18647148196", "body" => "Secrate Code:".$msg)
+                          );
+
+        print($message->sid);
+    }    
+
     public function create()
     {
         $user_id = Auth::id();
@@ -70,7 +85,7 @@ class ThreesController extends Controller
         $requestData = $request->all();
         $user_id = Auth::user()->id;
         $code = rand ( 1000 , 9999 );
-
+        $this->twilio_sms($request->input('phone_number'), $code);
         $three = Three::create($requestData + ['user_id' => $user_id, 'code' => $code]);
         return view('threes.validation');
     }    
