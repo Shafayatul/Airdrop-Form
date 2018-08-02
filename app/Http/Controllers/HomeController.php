@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -24,5 +26,20 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function select_type()
+    {
+        return view('selectType');
+    }
+
+    public function save_type($type)
+    {
+
+        $id = Auth::id();
+        $user = User::find($id);
+        $user->type = $type;
+        $user->save();
+        return redirect()->to('/home');
     }
 }
