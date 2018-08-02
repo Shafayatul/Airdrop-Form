@@ -32,7 +32,7 @@
 {!! NoCaptcha::renderJs() !!}
 {!! NoCaptcha::display() !!}
 
-
+<br>
 <p><input id="field_terms" type="checkbox" required>
 <label for="field_terms">I accept the <u>Terms and Conditions</u></label></p>
 
