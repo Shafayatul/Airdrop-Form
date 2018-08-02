@@ -64,6 +64,7 @@ class OnesController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'g-recaptcha-response' => 'required|captcha',
             'name' => ["required"],
             'address' => ["required"],
         ]);
@@ -117,6 +118,7 @@ class OnesController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
+            'g-recaptcha-response' => 'required|captcha',
             'name' => ["required"],
             'address' => ["required"],
         ]);

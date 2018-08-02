@@ -11,6 +11,10 @@ use Auth;
 use App\User;
 class FivesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -42,6 +46,7 @@ class FivesController extends Controller
      */
     public function create()
     {
+
         $user_id = Auth::id();
         $count = Five::where('user_id', $user_id)->count();
         if ($count == 0) {
@@ -61,7 +66,11 @@ class FivesController extends Controller
      */
     public function store(Request $request)
     {
-        
+
+        $validatedData = $request->validate([
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+
         $requestData = $request->all();
         $user_id = Auth::user()->id;
 
@@ -133,6 +142,11 @@ class FivesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
+
+        $validatedData = $request->validate([
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
         
         $requestData = $request->all();
 

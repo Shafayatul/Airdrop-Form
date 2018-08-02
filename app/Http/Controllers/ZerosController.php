@@ -64,6 +64,7 @@ class ZerosController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'g-recaptcha-response' => 'required|captcha',
             'ethereum_address' => ["required" , "regex:/^0x/"],
             'ip' => ["required", "unique:zeros", "ip"],
         ]);
@@ -113,8 +114,9 @@ class ZerosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $validatedData = $request->validate([
+            'g-recaptcha-response' => 'required|captcha',
             'ethereum_address' => ["required" , "regex:/^0x/"],
             'ip' => ["required", Rule::unique('zeros')->ignore($id), "ip"],
         ]);

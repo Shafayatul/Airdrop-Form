@@ -28,5 +28,9 @@
 {{-- {!! Form::radio('', "Yes, I understand and agree to the Terms and Privacy Policy", true) !!} --}}
 {{-- {!! Form::radio('terms_and_privacy_policy', "No, I do not agree to the Terms and Privacy Policy", false) !!} --}}
 
+<br>
+{!! NoCaptcha::renderJs() !!}
+{!! NoCaptcha::display() !!}
+
 
 {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create', ['class' => 'btn btn-primary form-margin']) !!}

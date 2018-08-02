@@ -11,6 +11,11 @@ use Auth;
 use App\User;
 class FoursController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }    
     /**
      * Display a listing of the resource.
      *
@@ -65,6 +70,9 @@ class FoursController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
         $user_id = Auth::user()->id;
         
         $requestData = $request->all();
@@ -119,6 +127,9 @@ class FoursController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
         
         $requestData = $request->all();
         

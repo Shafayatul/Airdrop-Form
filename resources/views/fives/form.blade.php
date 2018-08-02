@@ -14,5 +14,8 @@
 {!! Form::label('ethereum_address', 'Ethereum Address', ['class' => 'control-label']) !!}
 {!! Form::text('ethereum_address', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
 
+<br>
+{!! NoCaptcha::renderJs() !!}
+{!! NoCaptcha::display() !!}
 
 {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create', ['class' => 'btn btn-primary form-margin']) !!}

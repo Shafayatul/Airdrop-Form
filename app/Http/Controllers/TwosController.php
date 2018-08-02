@@ -65,7 +65,10 @@ class TwosController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validatedData = $request->validate([
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+            
         $requestData = $request->all();
         $user_id = Auth::user()->id;
 
@@ -138,7 +141,10 @@ class TwosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $validatedData = $request->validate([
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+            
         $requestData = $request->all();
         $two = Two::findOrFail($id);
         $last_point = $two->point;
