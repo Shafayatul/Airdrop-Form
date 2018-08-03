@@ -43,58 +43,79 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-{{--                     <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">question_answer</i>
-                            <span>Level 0</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="{{url('/zeros/create')}}">Add Ticket</a>
-                            </li>
-                            <li>
-                                <a href="{{url('/tickets/index')}}">My Tickets</a>
-                            </li>
-                        </ul>
-                    </li> --}}
-                    <li>
-                        <a href="{{ url('/zeros/create') }}">
-                            <i class="material-icons">spellcheck</i>
-                            <span>Step 0 - Initial Level</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/ones/create') }}">
-                            <i class="material-icons">account_box</i>
-                            <span>Step 1 - Low Level</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/twos/create') }}">
-                            <i class="material-icons">assessment</i>
-                            <span>Step 2 - Medium Level</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/threes/create') }}">
-                            <i class="material-icons">perm_phone_msg</i>
-                            <span>Step 3 - Phone varification</span>
-                        </a>
-                    </li>
+                    @if($current_user->type=="anonymous")
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">question_answer</i>
+                                <span>My Form</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a href="{{url('/anonymouses/create')}}">Form</a>
+                                </li>
+                                <li>
+                                    <a href="{{url('/anonymouses/index')}}">See Submitted Data</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @elseif()
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">question_answer</i>
+                                <span>My Form</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a href="{{url('/simple/create')}}">Form</a>
+                                </li>
+                                <li>
+                                    <a href="{{url('/simple/index')}}">See Submitted Data</a>
+                                </li>
+                            </ul>
+                        </li>
 
-                    <li>
-                        <a href="{{ url('/fours/create') }}">
-                            <i class="material-icons">school</i>
-                            <span>Step 3 - University varification</span>
-                        </a>
-                    </li>
+                    @else
 
-                    <li>
-                        <a href="{{ url('/fives/create') }}">
-                            <i class="material-icons">camera_roll</i>
-                            <span>Step 4 - Selfi varification</span>
-                        </a>
-                    </li>
+                        <li>
+                            <a href="{{ url('/zeros/create') }}">
+                                <i class="material-icons">spellcheck</i>
+                                <span>Step 0 - Initial Level</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/ones/create') }}">
+                                <i class="material-icons">account_box</i>
+                                <span>Step 1 - Low Level</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/twos/create') }}">
+                                <i class="material-icons">assessment</i>
+                                <span>Step 2 - Medium Level</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/threes/create') }}">
+                                <i class="material-icons">perm_phone_msg</i>
+                                <span>Step 3 - Phone varification</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('/fours/create') }}">
+                                <i class="material-icons">school</i>
+                                <span>Step 3 - University varification</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('/fives/create') }}">
+                                <i class="material-icons">camera_roll</i>
+                                <span>Step 4 - Selfi varification</span>
+                            </a>
+                        </li>
+                    @endif
+
                     
                 </ul>
             </div>
