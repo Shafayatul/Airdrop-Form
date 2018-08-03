@@ -1,40 +1,43 @@
+<div class="row">
+	<div class="col-sm-4 col-sm-offset-4 form-design">
+		{!! Form::label('email_address', 'Email Address', ['class' => 'control-label']) !!}
+		{!! Form::email('email_address', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
 
-{!! Form::label('email_address', 'Email Address', ['class' => 'control-label']) !!}
-{!! Form::email('email_address', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+		{!! Form::label('name', 'Name', ['class' => 'control-label']) !!}
+		{!! Form::text('name', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
 
-{!! Form::label('name', 'Name', ['class' => 'control-label']) !!}
-{!! Form::text('name', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+		{!! Form::label('university_email_address', 'University Email Address', ['class' => 'control-label']) !!}
+		{!! Form::email('university_email_address', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
 
-{!! Form::label('university_email_address', 'University Email Address', ['class' => 'control-label']) !!}
-{!! Form::email('university_email_address', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+		{!! Form::label('university_website', 'University Website', ['class' => 'control-label']) !!}
+		{!! Form::text('university_website', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
 
-{!! Form::label('university_website', 'University Website', ['class' => 'control-label']) !!}
-{!! Form::text('university_website', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+		{!! Form::label('undergraduate_major', 'Undergraduate Major', ['class' => 'control-label']) !!}
+		{!! Form::text('undergraduate_major', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
 
-{!! Form::label('undergraduate_major', 'Undergraduate Major', ['class' => 'control-label']) !!}
-{!! Form::text('undergraduate_major', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+		{!! Form::label('graduation_year', 'Graduation Year', ['class' => 'control-label']) !!}
+		{!! Form::text('graduation_year', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
 
-{!! Form::label('graduation_year', 'Graduation Year', ['class' => 'control-label']) !!}
-{!! Form::text('graduation_year', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+		{!! Form::label('university_ambassadors', 'University Ambassadors', ['class' => 'control-label']) !!}
+		{!! Form::text('university_ambassadors', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
 
-{!! Form::label('university_ambassadors', 'University Ambassadors', ['class' => 'control-label']) !!}
-{!! Form::text('university_ambassadors', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+		{!! Form::label('ethereum_address', 'Ethereum Address', ['class' => 'control-label']) !!}
+		{!! Form::text('ethereum_address', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
 
-{!! Form::label('ethereum_address', 'Ethereum Address', ['class' => 'control-label']) !!}
-{!! Form::text('ethereum_address', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+		{{-- {!! Form::label('terms_and_privacy_policy', 'Terms and Privacy Policy * Do you understand and agree to the Project Oblio OBL Airdrop Terms and Privacy Policy listed here? http://projectoblio.com/2018/07/02/airdrop-terms-and-privacy-policy/', ['class' => 'control-label']) !!} --}}
 
-{{-- {!! Form::label('terms_and_privacy_policy', 'Terms and Privacy Policy * Do you understand and agree to the Project Oblio OBL Airdrop Terms and Privacy Policy listed here? http://projectoblio.com/2018/07/02/airdrop-terms-and-privacy-policy/', ['class' => 'control-label']) !!} --}}
+		{{-- {!! Form::radio('', "Yes, I understand and agree to the Terms and Privacy Policy", true) !!} --}}
+		{{-- {!! Form::radio('terms_and_privacy_policy', "No, I do not agree to the Terms and Privacy Policy", false) !!} --}}
 
-{{-- {!! Form::radio('', "Yes, I understand and agree to the Terms and Privacy Policy", true) !!} --}}
-{{-- {!! Form::radio('terms_and_privacy_policy', "No, I do not agree to the Terms and Privacy Policy", false) !!} --}}
+		<br>
+		{!! NoCaptcha::renderJs() !!}
+		{!! NoCaptcha::display() !!}
 
-<br>
-{!! NoCaptcha::renderJs() !!}
-{!! NoCaptcha::display() !!}
-
-<br>
-<p><input id="field_terms" type="checkbox" required>
-<label for="field_terms">I accept the <u>Terms and Conditions</u></label></p>
+		<br>
+		<p><input id="field_terms" type="checkbox" required>
+		<label for="field_terms">I accept the <u>Terms and Conditions</u></label></p>
 
 
-{!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create', ['class' => 'btn btn-primary form-margin']) !!}
+		{!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create', ['class' => 'btn btn-primary btn-block form-margin']) !!}	
+	</div>
+</div>

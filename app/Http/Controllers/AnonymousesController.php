@@ -88,10 +88,13 @@ class AnonymousesController extends Controller
             
         }
         
-        Anonymouse::create($requestData + ['user_id' => $user_id]);
+        Anonymouse::create($requestData + ['user_id' => $user_id, 'point' => $point]);
+
+        $user = User::where('id', $user_id)->first();
+        $current_point = $user->point;
 
         $user = User::find($user_id);
-        $user->point = $point;
+        $user->point = $current_point+$point;
         $user->save();
 
         return redirect('anonymouses')->with('flash_message', 'Anonymouse added!');
@@ -164,12 +167,15 @@ class AnonymousesController extends Controller
             
         }
 
-        $anonymouse->update($requestData + ['user_id' => $user_id]);
+        $anonymouse->update($requestData + ['user_id' => $user_id, 'point' => $point]);
+
+        $user = User::where('id', $user_id)->first();
+        $current_point = $user->point;
 
         $user = User::find($user_id);
-        $user->point = $point;
+        $user->point = $current_point+$point-$last_point;
         $user->save();
-
+        
         return redirect('anonymouses')->with('flash_message', 'Anonymouse updated!');
     }
 

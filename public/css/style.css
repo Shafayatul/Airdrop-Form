@@ -8044,3 +8044,9 @@ html.ie11 .bs-searchbox .form-control {
 .form-margin{
   margin-top: 20px;
 }
+.form-design{
+  background-color: #F5F6F7; 
+  padding: 20px;
+  border-radius: 10px;
+
+}
