@@ -63,7 +63,7 @@ class AnonymousesController extends Controller
     {
         
         $validatedData = $request->validate([
-            // 'g-recaptcha-response' => 'required|captcha'
+            'g-recaptcha-response' => 'required|captcha'
         ]);
             
         $requestData = $request->all();
@@ -140,7 +140,7 @@ class AnonymousesController extends Controller
     {
         
         $validatedData = $request->validate([
-            // 'g-recaptcha-response' => 'required|captcha'
+            'g-recaptcha-response' => 'required|captcha'
         ]);
             
         $requestData = $request->all();

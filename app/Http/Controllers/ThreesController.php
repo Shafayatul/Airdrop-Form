@@ -57,6 +57,22 @@ class ThreesController extends Controller
 
         print($message->sid);
     }    
+    public function is_voip($phone)
+    {
+        $sid    = "AC0a282e55cc48a15113a29d840a346593";
+        $token  = "0ad8e8d48a2d73be91c98592f1cad262";
+        $twilio = new Client($sid, $token);
+
+        $phone_number = $twilio->lookups->v1->phoneNumbers($phone)
+                                            ->fetch(array("type" => "carrier"));
+
+        if($phone_number->carrier['type'] == "voip"){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }    
 
     public function create()
     {
@@ -105,8 +121,14 @@ class ThreesController extends Controller
             $user = User::where('id', $user_id)->first();
             $current_point = $user->point;
 
+            if ($this->is_voip($three->phone_number)) {
+                $point = 1;
+            }else{
+                $point = 5;
+            }    
+            
             $user = User::find($user_id);
-            $user->point = $current_point+5;
+            $user->point = $current_point+$point;
             $user->save();
 
             return redirect(route('threes.show', array('id' => $three->id)));
