@@ -73,6 +73,10 @@ class LoginController extends Controller
         if($existingUser){
             // log them in
             auth()->login($existingUser, true);
+            if ($existingUser->type == null) {
+                return redirect()->to('/select-type');
+            }
+            
         } else {
             // create a new user
             $newUser                  = new User;
@@ -81,8 +85,9 @@ class LoginController extends Controller
             $newUser->avatar           = $user->avatar;
             $newUser->save();
             auth()->login($newUser, true);
+            return redirect()->to('/select-type');
         }
-        return redirect()->to('/select-type');
+        return redirect()->to('/home');
     }
 
 }
