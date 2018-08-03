@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
-
+use Session;
 use Auth;
 use App\Zero;
 use Illuminate\Http\Request;
@@ -72,7 +72,7 @@ class ZerosController extends Controller
         $requestData = $request->all();
         
         $zero = Zero::create($requestData + ['user_id' => Auth::user()->id]);
-
+        Session::flash('flash_message','Date successfully added.');
         return redirect(route('zeros.show', array('id' => $zero->id)));
     }
 
@@ -125,6 +125,8 @@ class ZerosController extends Controller
         
         $zero = Zero::findOrFail($id);
         $zero->update($requestData);
+
+        Session::flash('flash_message','Date successfully updated.');
 
         return redirect(route('zeros.show', array('id' => $zero->id)));
     }

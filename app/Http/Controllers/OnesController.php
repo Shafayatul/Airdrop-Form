@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Session;
 use Auth;
 use App\One;
 use App\User;
@@ -76,6 +76,8 @@ class OnesController extends Controller
         $user->point = 0.3;
         $user->save();
 
+        Session::flash('flash_message','Date successfully added.');
+
         return redirect(route('ones.show', array('id' => $one->id)));
     }
 
@@ -127,6 +129,8 @@ class OnesController extends Controller
         
         $one = One::findOrFail($id);
         $one->update($requestData);
+
+        Session::flash('flash_message','Date successfully updated.');
 
         return redirect(route('ones.show', array('id' => $one->id)));
     }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Session;
 use Auth;
 use App\User;
 use App\Anonymouse;
@@ -96,7 +96,7 @@ class AnonymousesController extends Controller
         $user = User::find($user_id);
         $user->point = $current_point+$point;
         $user->save();
-
+        Session::flash('flash_message','Date successfully added.');
         return redirect(route('anonymouses.show', array('id' => $anonymouse->id)));
     }
 
@@ -175,6 +175,8 @@ class AnonymousesController extends Controller
         $user = User::find($user_id);
         $user->point = $current_point+$point-$last_point;
         $user->save();
+
+        Session::flash('flash_message','Date successfully updated.');
         
         return redirect(route('anonymouses.show', array('id' => $anonymouse->id)));
     }

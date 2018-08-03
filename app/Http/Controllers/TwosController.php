@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Session;
 use Auth;
 use App\User;
 use App\Two;
@@ -100,6 +100,8 @@ class TwosController extends Controller
         $user->point = $current_point+$point;
         $user->save();
 
+        Session::flash('flash_message','Date successfully added.');
+
         return redirect(route('twos.show', array('id' => $two->id)));
     }
 
@@ -178,6 +180,7 @@ class TwosController extends Controller
         $user->point = $current_point+$point-$last_point;
         $user->save();
 
+        Session::flash('flash_message','Date successfully updated.');
 
         return redirect(route('twos.show', array('id' => $two->id)));
     }

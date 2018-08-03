@@ -9,6 +9,7 @@ use App\Five;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use Session;
 class FivesController extends Controller
 {
     public function __construct()
@@ -103,6 +104,7 @@ class FivesController extends Controller
         $user = User::find($user_id);
         $user->point = $current_point+7;
         $user->save();
+        Session::flash('flash_message','Date successfully added.');
         return redirect(route('fives.show', array('id' => $LastInsertId)));
     }
 
@@ -178,6 +180,8 @@ class FivesController extends Controller
         $five->referral_emails = $request->referral_emails;
         $five->ethereum_address = $request->ethereum_address;
         $five->save();
+
+        Session::flash('flash_message','Date successfully updated.');
 
         return redirect(route('fives.show', array('id' => $five->id)));
     }

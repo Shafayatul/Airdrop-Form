@@ -10,7 +10,7 @@ use App\User;
 use App\Three;
 use Illuminate\Http\Request;
 use Twilio\Rest\Client;
-
+use Session;
 class ThreesController extends Controller
 {
 
@@ -103,6 +103,7 @@ class ThreesController extends Controller
         $code = rand ( 1000 , 9999 );
         $this->twilio_sms($request->input('phone_number'), $code);
         $three = Three::create($requestData + ['user_id' => $user_id, 'code' => $code]);
+        Session::flash('flash_message','Phone number added successfully. A message has been sent to your mobile number to varify your number.');
         return view('threes.validation');
     }    
 
@@ -123,8 +124,10 @@ class ThreesController extends Controller
 
             if ($this->is_voip($three->phone_number)) {
                 $point = 1;
+                Session::flash('error','You have used VOIP number. Your answer can be rejected.');
             }else{
                 $point = 5;
+                Session::flash('flash_message','Phone number is successfully varified.');
             }    
             
             $user = User::find($user_id);
@@ -187,6 +190,8 @@ class ThreesController extends Controller
         $this->twilio_sms($request->input('phone_number'), $code);
         $three = Three::findOrFail($id);
         $three->update($requestData + ['is_varified' => 0, 'code' => $code]);
+
+        Session::flash('flash_message','Phone number updated successfully. A message has been sent to your mobile number to varify your number.');
 
         return view('threes.validation');
     }

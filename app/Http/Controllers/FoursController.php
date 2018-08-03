@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Session;
 use App\Four;
 use Illuminate\Http\Request;
 use Auth;
@@ -86,6 +86,8 @@ class FoursController extends Controller
         $user->point = $current_point+5;
         $user->save();
 
+        Session::flash('flash_message','Date successfully added.');
+
         return redirect(route('fours.show', array('id' => $four->id)));
     }
 
@@ -135,6 +137,8 @@ class FoursController extends Controller
         
         $four = Four::findOrFail($id);
         $four->update($requestData);
+
+        Session::flash('flash_message','Date successfully updated.');
 
         return redirect(route('fours.show', array('id' => $four->id)));
     }
