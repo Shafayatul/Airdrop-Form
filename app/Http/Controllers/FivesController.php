@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Image;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 use App\Five;
 use Illuminate\Http\Request;
 use Auth;
@@ -69,7 +70,7 @@ class FivesController extends Controller
     {
 
         $validatedData = $request->validate([
-            'g-recaptcha-response' => 'required|captcha'
+            // 'g-recaptcha-response' => 'required|captcha'
         ]);
 
         $requestData = $request->all();
@@ -80,8 +81,8 @@ class FivesController extends Controller
             $image = $request->file('video');
             $filename = rand(10,100).time().'.'.$image->getClientOriginalExtension();
             $location = public_path('selfie/'.$filename);
-            $image = Image::make($image->getRealPath());
-            Image::make($image)->save($location);
+            $path = $request->file('video')->store('selfie');
+            $filename = Storage::url($path);
         }else{
             $filename="";
         }
@@ -149,7 +150,7 @@ class FivesController extends Controller
         
 
         $validatedData = $request->validate([
-            'g-recaptcha-response' => 'required|captcha'
+            // 'g-recaptcha-response' => 'required|captcha'
         ]);
         
         $requestData = $request->all();
@@ -159,14 +160,13 @@ class FivesController extends Controller
 
         // upload video file and get the link
         if (($request->hasFile('video')) ) {
-            if(file_exists('selfie/'.$old_data->video)){
-                unlink('selfie/'.$old_data->video);
-            }
-            $image = $request->file('video');
-            $filename = rand(10,100).time().'.'.$image->getClientOriginalExtension();
-            $location = public_path('selfie/'.$filename);
-            $image = Image::make($image->getRealPath());
-            Image::make($image)->save($location);
+            $path = $request->file('video')->store('selfie');
+            $filename = Storage::url($path);
+            if($old_data->video !=""){
+                Storage::delete(str_replace("storage/","",substr($old_data->video, strpos($old_data->video, "storage/"))));
+            }            
+        }elseif($old_data->video != ""){
+            $filename=$old_data->video;
         }else{
             $filename="";
         }

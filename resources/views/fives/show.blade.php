@@ -59,7 +59,7 @@
                                             <th> Video </th>
                                             <td> 
                                                 @if($five->video !="")
-                                                <a href="{{ url('/selfie/'.$five->video) }}" download="download">Download</a>
+                                                <a href="{{ $five->video }}" download="download" target="_blank">Download</a>
                                                 @endif
                                             </td>
                                         </tr>
