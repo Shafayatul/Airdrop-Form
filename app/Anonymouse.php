@@ -25,7 +25,7 @@ class Anonymouse extends Model
      *
      * @var array
      */
-    protected $fillable = ['email', 'ethereum_address', 'number', 'user_id', 'point'];
+    protected $fillable = ['email', 'ethereum_address', 'privacy', 'type', 'number', 'user_id'];
 
     
 }

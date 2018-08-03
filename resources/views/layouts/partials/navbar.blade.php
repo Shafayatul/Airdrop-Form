@@ -58,7 +58,7 @@
                                 </li>
                             </ul>
                         </li>
-                    @elseif()
+                    @elseif($current_user->type=="simple")
                         <li>
                             <a href="javascript:void(0);" class="menu-toggle">
                                 <i class="material-icons">question_answer</i>

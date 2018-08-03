@@ -70,15 +70,28 @@ class AnonymousesController extends Controller
         $user_id = Auth::user()->id;
 
         $number = $request->number;
-        $point = $number*0.1;
-        
-        Anonymouse::create($requestData + ['user_id' => $user_id, 'point' => $point]);
+        if ($request->privacy == "Anonymous") {
 
-        $user = User::where('id', $user_id)->first();
-        $current_point = $user->point;
+            if ($request->type == "Audio") {
+                $point = $number*0.1;
+            }elseif ($request->type == "Video") {
+                $point = $number*0.3;
+            }
+
+        }elseif ($request->privacy == "Raw") {
+
+            if ($request->type == "Audio") {
+                $point = $number*0.3;
+            }elseif ($request->type == "Video") {
+                $point = $number*0.6;
+            }
+            
+        }
+        
+        Anonymouse::create($requestData + ['user_id' => $user_id]);
 
         $user = User::find($user_id);
-        $user->point = $current_point+$point;
+        $user->point = $point;
         $user->save();
 
         return redirect('anonymouses')->with('flash_message', 'Anonymouse added!');
@@ -133,15 +146,28 @@ class AnonymousesController extends Controller
         $user_id = Auth::user()->id;
 
         $number = $request->number;
-        $point = $number*0.1;
+        if ($request->privacy == "Anonymous") {
 
-        $anonymouse->update($requestData + ['user_id' => $user_id, 'point' => $point]);
+            if ($request->type == "Audio") {
+                $point = $number*0.1;
+            }elseif ($request->type == "Video") {
+                $point = $number*0.3;
+            }
 
-        $user = User::where('id', $user_id)->first();
-        $current_point = $user->point;
+        }elseif ($request->privacy == "Raw") {
+
+            if ($request->type == "Audio") {
+                $point = $number*0.3;
+            }elseif ($request->type == "Video") {
+                $point = $number*0.6;
+            }
+            
+        }
+
+        $anonymouse->update($requestData + ['user_id' => $user_id]);
 
         $user = User::find($user_id);
-        $user->point = $current_point+$point-$last_point;
+        $user->point = $point;
         $user->save();
 
         return redirect('anonymouses')->with('flash_message', 'Anonymouse updated!');

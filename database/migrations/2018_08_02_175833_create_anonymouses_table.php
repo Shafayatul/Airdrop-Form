@@ -13,13 +13,15 @@ class CreateAnonymousesTable extends Migration
     public function up()
     {
         Schema::create('anonymouses', function (Blueprint $table) {
+
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->unique();
-            $table->foreign('user_id')->references('id')->on('users');        
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users'); 
             $table->string('email')->nullable();
-            $table->string('ethereum_address')->nullable();
-            $table->string('number')->nullable();
-            $table->string('point')->nullable();
+            $table->string('ethereum_address')->nullable();  
+            $table->string('privacy');
+            $table->string('type');
+            $table->string('number');
             $table->timestamps();
         });
     }
