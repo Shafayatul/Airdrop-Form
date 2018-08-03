@@ -47,7 +47,7 @@ class AnonymousesController extends Controller
             return view('anonymouses.create');
         }else{
             $anonymouse = Anonymouse::where('user_id', $user_id)->first();
-            return redirect(route('anonymouses.edit', array('id' => $anonymouse->id)));
+            return redirect(route('anonymouses.show', array('id' => $anonymouse->id)));
         }   
 
     }
@@ -63,7 +63,7 @@ class AnonymousesController extends Controller
     {
         
         $validatedData = $request->validate([
-            'g-recaptcha-response' => 'required|captcha'
+            // 'g-recaptcha-response' => 'required|captcha'
         ]);
             
         $requestData = $request->all();
@@ -88,7 +88,7 @@ class AnonymousesController extends Controller
             
         }
         
-        Anonymouse::create($requestData + ['user_id' => $user_id, 'point' => $point]);
+        $anonymouse = Anonymouse::create($requestData + ['user_id' => $user_id, 'point' => $point]);
 
         $user = User::where('id', $user_id)->first();
         $current_point = $user->point;
@@ -97,7 +97,7 @@ class AnonymousesController extends Controller
         $user->point = $current_point+$point;
         $user->save();
 
-        return redirect('anonymouses')->with('flash_message', 'Anonymouse added!');
+        return redirect(route('anonymouses.show', array('id' => $anonymouse->id)));
     }
 
     /**
@@ -140,7 +140,7 @@ class AnonymousesController extends Controller
     {
         
         $validatedData = $request->validate([
-            'g-recaptcha-response' => 'required|captcha'
+            // 'g-recaptcha-response' => 'required|captcha'
         ]);
             
         $requestData = $request->all();
@@ -176,7 +176,7 @@ class AnonymousesController extends Controller
         $user->point = $current_point+$point-$last_point;
         $user->save();
         
-        return redirect('anonymouses')->with('flash_message', 'Anonymouse updated!');
+        return redirect(route('anonymouses.show', array('id' => $anonymouse->id)));
     }
 
     /**

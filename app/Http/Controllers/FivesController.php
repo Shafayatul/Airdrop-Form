@@ -53,7 +53,7 @@ class FivesController extends Controller
             return view('fives.create');
         }else{
             $five = Five::where('user_id', $user_id)->first();
-            return redirect(route('fives.edit', array('id' => $five->id)));
+            return redirect(route('fives.show', array('id' => $five->id)));
         }        
     }
 
@@ -94,6 +94,8 @@ class FivesController extends Controller
         $five->ethereum_address = $request->ethereum_address;
         $five->save();
 
+        $LastInsertId = $five->id;
+
 
         $user = User::where('id', $user_id)->first();
         $current_point = $user->point;
@@ -101,7 +103,7 @@ class FivesController extends Controller
         $user = User::find($user_id);
         $user->point = $current_point+7;
         $user->save();
-        return redirect('fives')->with('flash_message', 'Five added!');
+        return redirect(route('fives.show', array('id' => $LastInsertId)));
     }
 
     /**
@@ -177,7 +179,7 @@ class FivesController extends Controller
         $five->ethereum_address = $request->ethereum_address;
         $five->save();
 
-        return redirect('fives')->with('flash_message', 'Five updated!');
+        return redirect(route('fives.show', array('id' => $five->id)));
     }
 
     /**

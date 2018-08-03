@@ -50,7 +50,7 @@ class ZerosController extends Controller
             return view('zeros.create');
         }else{
             $zero = Zero::where('user_id', $user_id)->first();
-            return redirect(route('zeros.edit', array('id' => $zero->id)));
+            return redirect(route('zeros.show', array('id' => $zero->id)));
         }
     }
 
@@ -71,9 +71,9 @@ class ZerosController extends Controller
             
         $requestData = $request->all();
         
-        Zero::create($requestData + ['user_id' => Auth::user()->id]);
+        $zero = Zero::create($requestData + ['user_id' => Auth::user()->id]);
 
-        return redirect('zeros')->with('flash_message', 'Zero added!');
+        return redirect(route('zeros.show', array('id' => $zero->id)));
     }
 
     /**
@@ -126,7 +126,7 @@ class ZerosController extends Controller
         $zero = Zero::findOrFail($id);
         $zero->update($requestData);
 
-        return redirect('zeros')->with('flash_message', 'Zero updated!');
+        return redirect(route('zeros.show', array('id' => $zero->id)));
     }
 
     /**

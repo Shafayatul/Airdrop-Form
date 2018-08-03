@@ -50,7 +50,7 @@ class OnesController extends Controller
             return view('ones.create');
         }else{
             $one = One::where('user_id', $user_id)->first();
-            return redirect(route('ones.edit', array('id' => $one->id)));
+            return redirect(route('ones.show', array('id' => $one->id)));
         }
     }
 
@@ -70,13 +70,13 @@ class OnesController extends Controller
         ]);
         $requestData = $request->all();
         $user_id = Auth::user()->id;
-        One::create($requestData + ['user_id' => $user_id]);
+        $one = One::create($requestData + ['user_id' => $user_id]);
 
         $user = User::find($user_id);
         $user->point = 0.3;
         $user->save();
 
-        return redirect('ones')->with('flash_message', 'One added!');
+        return redirect(route('ones.show', array('id' => $one->id)));
     }
 
     /**
@@ -128,7 +128,7 @@ class OnesController extends Controller
         $one = One::findOrFail($id);
         $one->update($requestData);
 
-        return redirect('ones')->with('flash_message', 'One updated!');
+        return redirect(route('ones.show', array('id' => $one->id)));
     }
 
     /**

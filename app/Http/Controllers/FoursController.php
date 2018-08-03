@@ -57,7 +57,7 @@ class FoursController extends Controller
             return view('fours.create');
         }else{
             $four = Four::where('user_id', $user_id)->first();
-            return redirect(route('fours.edit', array('id' => $four->id)));
+            return redirect(route('fours.show', array('id' => $four->id)));
         }
     }
 
@@ -77,7 +77,7 @@ class FoursController extends Controller
         
         $requestData = $request->all();
         
-        Four::create($requestData + ['user_id' => $user_id]);
+        $four = Four::create($requestData + ['user_id' => $user_id]);
 
         $user = User::where('id', $user_id)->first();
         $current_point = $user->point;
@@ -86,7 +86,7 @@ class FoursController extends Controller
         $user->point = $current_point+5;
         $user->save();
 
-        return redirect('fours')->with('flash_message', 'Four added!');
+        return redirect(route('fours.show', array('id' => $four->id)));
     }
 
     /**
@@ -136,7 +136,7 @@ class FoursController extends Controller
         $four = Four::findOrFail($id);
         $four->update($requestData);
 
-        return redirect('fours')->with('flash_message', 'Four updated!');
+        return redirect(route('fours.show', array('id' => $four->id)));
     }
 
     /**

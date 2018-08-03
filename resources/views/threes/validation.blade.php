@@ -38,16 +38,19 @@
                                 </ul>
                             @endif
 
+                            <div class="row">
+                                <div class="col-sm-4 col-sm-offset-4 form-design">
+                                    {!! Form::open(['url' => '/phone/validation', 'class' => 'form-horizontal', 'files' => true]) !!}
 
-                            {!! Form::open(['url' => '/phone/validation', 'class' => 'form-horizontal', 'files' => true]) !!}
 
+                                        {!! Form::label('code', 'Code', ['class' => 'control-label']) !!}
+                                        {!! Form::text('code', null, ['class' => 'form-control', 'required' => 'required']) !!}
 
-                                {!! Form::label('code', 'Code', ['class' => 'control-label']) !!}
-                                {!! Form::text('code', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                        {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Validate', ['class' => 'btn btn-primary btn-block form-margin']) !!}
 
-                                {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create', ['class' => 'btn btn-primary form-margin']) !!}
-
-                            {!! Form::close() !!}
+                                    {!! Form::close() !!}
+                                </div>
+                            </div>
 
                         </div>
                     </div>

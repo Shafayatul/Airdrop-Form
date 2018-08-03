@@ -51,7 +51,7 @@ class TwosController extends Controller
             return view('twos.create');
         }else{
             $two = Two::where('user_id', $user_id)->first();
-            return redirect(route('twos.edit', array('id' => $two->id)));
+            return redirect(route('twos.show', array('id' => $two->id)));
         }
 
     }
@@ -91,7 +91,7 @@ class TwosController extends Controller
             
         }
         
-        Two::create($requestData + ['user_id' => $user_id, 'point' => $point]);
+        $two = Two::create($requestData + ['user_id' => $user_id, 'point' => $point]);
 
         $user = User::where('id', $user_id)->first();
         $current_point = $user->point;
@@ -100,7 +100,7 @@ class TwosController extends Controller
         $user->point = $current_point+$point;
         $user->save();
 
-        return redirect('twos')->with('flash_message', 'Two added!');
+        return redirect(route('twos.show', array('id' => $two->id)));
     }
 
     /**
@@ -179,7 +179,7 @@ class TwosController extends Controller
         $user->save();
 
 
-        return redirect('twos')->with('flash_message', 'Two updated!');
+        return redirect(route('twos.show', array('id' => $two->id)));
     }
 
     /**

@@ -66,7 +66,7 @@ class ThreesController extends Controller
             return view('threes.create');
         }else{
             $three = Three::where('user_id', $user_id)->first();
-            return redirect(route('threes.edit', array('id' => $three->id)));
+            return redirect(route('threes.show', array('id' => $three->id)));
         }
     }
 
@@ -109,7 +109,7 @@ class ThreesController extends Controller
             $user->point = $current_point+5;
             $user->save();
 
-            return "done";
+            return redirect(route('threes.show', array('id' => $three->id)));
         }else{
             return view('threes.validation');
         }
@@ -161,11 +161,12 @@ class ThreesController extends Controller
         ]);
         
         $requestData = $request->all();
-        
+        $code = rand ( 1000 , 9999 );
+        $this->twilio_sms($request->input('phone_number'), $code);
         $three = Three::findOrFail($id);
-        $three->update($requestData);
+        $three->update($requestData + ['is_varified' => 0, 'code' => $code]);
 
-        return redirect('threes')->with('flash_message', 'Three updated!');
+        return view('threes.validation');
     }
 
     /**

@@ -1,46 +1,79 @@
-@extends('layouts.app')
+@extends('layouts.app2')
+
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            @include('admin.sidebar')
-
-            <div class="col-md-9">
-                <div class="card">
-                    <div class="card-header">Anonymouse {{ $anonymouse->id }}</div>
-                    <div class="card-body">
-
-                        <a href="{{ url('/anonymouses') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/anonymouses/' . $anonymouse->id . '/edit') }}" title="Edit Anonymouse"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                        {!! Form::open([
-                            'method'=>'DELETE',
-                            'url' => ['anonymouses', $anonymouse->id],
-                            'style' => 'display:inline'
-                        ]) !!}
-                            {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
-                                    'type' => 'submit',
-                                    'class' => 'btn btn-danger btn-sm',
-                                    'title' => 'Delete Anonymouse',
-                                    'onclick'=>'return confirm("Confirm delete?")'
-                            ))!!}
-                        {!! Form::close() !!}
-                        <br/>
-                        <br/>
-
-                        <div class="table-responsive">
-                            <table class="table table-borderless">
-                                <tbody>
-                                    <tr>
-                                        <th>ID</th><td>{{ $anonymouse->id }}</td>
-                                    </tr>
-                                    <tr><th> Email </th><td> {{ $anonymouse->email }} </td></tr><tr><th> Ethereum Address </th><td> {{ $anonymouse->ethereum_address }} </td></tr><tr><th> Number </th><td> {{ $anonymouse->number }} </td></tr>
-                                </tbody>
-                            </table>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>Anonymous Audio Dub</h2>
+            </div>
+            <!-- Input -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h2>
+                                        Info For Anonymous Dub
+                                    </h2>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <a href="{{ url('/anonymouses/' . $anonymouse->id . '/edit') }}" title="Edit Zero">
+                                        <button class="btn btn-primary btn-sm">
+                                            <i class="material-icons">border_color</i> Edit
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+                        <div class="body">
+                            
+                            @if(Session::has('flash_message'))
+                                <div class="alert alert-success">
+                                    <strong>Success!</strong> {{ Session::get('flash_message') }}
+                                </div>
+                            @endif
 
+                            @if(Session::has('error'))
+                            <div class="alert alert-danger">
+                                <strong>Error!</strong> {{ Session::get('error') }}
+                            </div>
+                            @endif   
+
+                            @if ($errors->any())
+                                <ul class="alert alert-danger">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+
+
+                            <div class="table-responsive">
+                                <table class="table table-borderless">
+                                    <tbody>
+                                        
+                                        
+                                        <tr><th> Email </th><td> {{ $anonymouse->email }} </td></tr>
+                                        <tr><th> Ethereum Address </th><td> {{ $anonymouse->ethereum_address }} </td></tr>
+                                        
+                                        <tr>
+                                            <th>privacy</th><td>{{ $anonymouse->privacy }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>type</th><td>{{ $anonymouse->type }}</td>
+                                        </tr>
+                                        <tr><th> Number </th><td> {{ $anonymouse->number }} </td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- #END# Input -->
         </div>
-    </div>
+    </section>
 @endsection
