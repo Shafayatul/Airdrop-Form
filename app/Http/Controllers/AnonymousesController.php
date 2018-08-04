@@ -9,6 +9,8 @@ use Auth;
 use App\User;
 use App\Anonymouse;
 use Illuminate\Http\Request;
+use App\Mail\AfterDubFromSubmitByAnonymous;
+use Illuminate\Support\Facades\Mail;
 
 class AnonymousesController extends Controller
 {
@@ -97,6 +99,7 @@ class AnonymousesController extends Controller
         $user->point = $current_point+$point;
         $user->save();
         Session::flash('flash_message','Date successfully added.');
+        Mail::to($user->email)->send(new AfterDubFromSubmitByAnonymous($anonymouse));
         return redirect(route('anonymouses.show', array('id' => $anonymouse->id)));
     }
 
@@ -177,6 +180,10 @@ class AnonymousesController extends Controller
         $user->save();
 
         Session::flash('flash_message','Date successfully updated.');
+
+        $anonymouse = Anonymouse::findOrFail($id);
+
+        Mail::to($user->email)->send(new AfterDubFromSubmitByAnonymous($anonymouse));
         
         return redirect(route('anonymouses.show', array('id' => $anonymouse->id)));
     }

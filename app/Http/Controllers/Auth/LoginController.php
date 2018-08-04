@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use App\Mail\Welcome;
+use Illuminate\Support\Facades\Mail;
 use Socialite;
 use App\User;
 
@@ -85,6 +86,8 @@ class LoginController extends Controller
             $newUser->avatar           = $user->avatar;
             $newUser->save();
             auth()->login($newUser, true);
+
+            Mail::to($user->email)->send(new Welcome());
             return redirect()->to('/select-type');
         }
         return redirect()->to('/home');

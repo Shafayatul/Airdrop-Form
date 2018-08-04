@@ -9,6 +9,9 @@ use Auth;
 use App\User;
 use App\Two;
 use Illuminate\Http\Request;
+use App\Mail\AfterDubFromSubmitByAdvance;
+use Illuminate\Support\Facades\Mail;
+
 
 class TwosController extends Controller
 {
@@ -102,6 +105,8 @@ class TwosController extends Controller
 
         Session::flash('flash_message','Date successfully added.');
 
+        Mail::to($user->email)->send(new AfterDubFromSubmitByAdvance($two));
+
         return redirect(route('twos.show', array('id' => $two->id)));
     }
 
@@ -181,6 +186,9 @@ class TwosController extends Controller
         $user->save();
 
         Session::flash('flash_message','Date successfully updated.');
+
+        $two = Two::findOrFail($id);
+        Mail::to($user->email)->send(new AfterDubFromSubmitByAdvance($two));
 
         return redirect(route('twos.show', array('id' => $two->id)));
     }
