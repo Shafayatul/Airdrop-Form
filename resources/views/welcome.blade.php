@@ -55,7 +55,7 @@
                 transition: all 0.1s linear;
             }
             .panel-login>.panel-heading a.active{
-                color: #029f5b;
+                color: #53A3CD;
                 font-size: 18px;
             }
             .panel-login>.panel-heading hr{
@@ -214,7 +214,7 @@
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-sm-6 col-sm-offset-3">
-                                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-login" value="Register Now">
                                                         </div>
                                                     </div>
                                                 </div>
