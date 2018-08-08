@@ -25,7 +25,7 @@ class Zero extends Model
      *
      * @var array
      */
-    protected $fillable = ['ethereum_address', 'ip', 'user_id'];
+    protected $fillable = ['ethereum_address', 'user_id'];
 
     
 }

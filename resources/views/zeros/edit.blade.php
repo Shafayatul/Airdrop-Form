@@ -5,7 +5,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>Initial Form</h2>
+                <h2>Ethereum Address</h2>
             </div>
             <!-- Input -->
             <div class="row clearfix">
@@ -13,7 +13,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Update Initial Form
+                                Provide us with the Ethereum address you’d like to contribute ETH from. If you’ll be completing more verification steps, this is where we’ll be sending free ETH at the conclusion of the airdrop
                             </h2>
                         </div>
                         <div class="body">

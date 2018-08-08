@@ -44,49 +44,16 @@
                         </a>
                     </li>
                     @if($current_user->type=="anonymous")
-                        <li>
-                            <a href="{{ url('/zeros/create') }}">
-                                <i class="material-icons">spellcheck</i>
-                                <span>Step 0 - Initial Level</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/anonymouses/create') }}">
-                                <i class="material-icons">assessment</i>
-                                <span>Step 1 - Anonymous Form</span>
-                            </a>
-                        </li>
+
                     @elseif($current_user->type=="simple")
-                        <li>
-                            <a href="{{ url('/zeros/create') }}">
-                                <i class="material-icons">spellcheck</i>
-                                <span>Step 0 - Initial Level</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/ones/create') }}">
-                                <i class="material-icons">account_box</i>
-                                <span>Step 1 - Low Level</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/threes/create') }}">
-                                <i class="material-icons">perm_phone_msg</i>
-                                <span>Step 3 - Phone varification</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/anonymouses/create') }}">
-                                <i class="material-icons">assessment</i>
-                                <span>Step 4 - Initial Level</span>
-                            </a>
-                        </li>
+
+
                     @else
 
                         <li>
                             <a href="{{ url('/zeros/create') }}">
                                 <i class="material-icons">spellcheck</i>
-                                <span>Step 0 - Initial Level</span>
+                                <span>Step 0 - Ethereum Address</span>
                             </a>
                         </li>
                         <li>
