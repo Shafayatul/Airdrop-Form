@@ -83,7 +83,8 @@ class LoginController extends Controller
             $newUser                  = new User;
             $newUser->name            = $user->name;
             $newUser->email           = $user->email;
-            $newUser->avatar           = $user->avatar;
+            $newUser->avatar          = $user->avatar;
+            $newUser->password        = bcrypt(rand(100000,100000000));
             $newUser->save();
             auth()->login($newUser, true);
 
