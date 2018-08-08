@@ -28,7 +28,7 @@
 <body class="login-page">
     <div class="login-box">
         <div class="logo">
-            <a href="javascript:void(0);">Laravel</a>
+            <a href="javascript:void(0);">Project Oblio Airdrop</a>
             <small></small>
         </div>
         <div class="card">
@@ -36,43 +36,58 @@
 
 
             <div class="row">
-                <h3 class="text-center">Choose Your Account Type</h3>
+                <h3 class="text-center">Choose how you’ll earn and contribute to Project Oblio.</h3>
                 <hr>
                 <div class="col-xs-12">
                     <a href="{{url('/save-type/anonymous')}}">
-                        <div class="info-box bg-orange hover-expand-effect">
+                        <div class="info-box bg-cyan hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons">person_outline</i>
                             </div>
                             <div class="content">
-                                <div class="text">Click to select</div>
                                 <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20">ANONYMOUS</div>
+                                <div class="text">
+                                    <br>
+                                    10 OBL Free. 2.5 mETH/OBL contribution rate.
+                                    <br>
+                                    E-mail, anonymized DUBs
+                                </div>
+                                
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-xs-12">
                     <a href="{{url('/save-type/simple')}}">
-                        <div class="info-box bg-orange hover-expand-effect">
+                        <div class="info-box bg-cyan hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons">accessibility_new</i>
                             </div>
                             <div class="content">
-                                <div class="text">Click to select</div>
                                 <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20">SIMPLE</div>
+                                <div class="text">
+                                    3 Karma and 300 OBL Free. 2.0 mETH/OBL contribution rate
+                                    <br>
+                                    Phone, e-mail, anonymized DUBs
+                                </div>
+                                
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-xs-12">
                     <a href="{{url('/save-type/advance')}}">
-                        <div class="info-box bg-orange hover-expand-effect">
+                        <div class="info-box bg-cyan hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons">how_to_reg</i>
                             </div>
                             <div class="content">
-                                <div class="text">Click to select</div>
                                 <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20">ADVANCE</div>
+                                <div class="text">
+                                    10 Karma. 800 OBL Free. 1.0 mETH/OBL contribution rate
+                                    <br>
+                                    Full identification needed.
+                                </div>
                             </div>
                         </div>
                     </a>

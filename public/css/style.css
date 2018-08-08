@@ -3094,11 +3094,12 @@ section.content {
     padding: 7px 10px; }
     .info-box .content .text {
       font-size: 13px;
-      margin-top: 11px;
+      margin-top: 0;
       color: #555; }
     .info-box .content .number {
       font-weight: normal;
-      font-size: 26px;
+      font-size: 15px;
+      font-weight: bold;
       margin-top: -4px;
       color: #555; }
 
