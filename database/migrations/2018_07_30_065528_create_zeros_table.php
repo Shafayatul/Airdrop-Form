@@ -18,6 +18,7 @@ class CreateZerosTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('ethereum_address')->nullable();
             $table->string('ip')->unique()->nullable();
+            $table->string('point')->default(0)->nullable();
             $table->timestamps();
         });
     }

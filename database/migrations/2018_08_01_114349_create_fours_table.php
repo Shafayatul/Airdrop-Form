@@ -24,6 +24,7 @@ class CreateFoursTable extends Migration
             $table->string('graduation_year')->nullable();
             $table->string('university_ambassadors')->nullable();
             $table->string('ethereum_address')->nullable();
+            $table->string('point')->default(0)->nullable();
             $table->timestamps();
         });
     }

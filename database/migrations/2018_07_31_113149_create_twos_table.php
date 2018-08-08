@@ -19,6 +19,7 @@ class CreateTwosTable extends Migration
             $table->string('privacy');
             $table->string('type');
             $table->string('number');
+            $table->string('point')->default(0)->nullable();
             $table->timestamps();
         });
     }

@@ -21,6 +21,7 @@ class CreateFivesTable extends Migration
             $table->string('video')->nullable();
             $table->string('referral_emails')->nullable();
             $table->string('ethereum_address')->nullable();
+            $table->string('point')->default(0)->nullable();
             $table->timestamps();
         });
     }

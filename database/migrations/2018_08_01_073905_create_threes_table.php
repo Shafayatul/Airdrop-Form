@@ -19,6 +19,7 @@ class CreateThreesTable extends Migration
             $table->string('phone_number')->nullable();
             $table->string('code')->nullable();
             $table->boolean('is_varified')->default(0);
+            $table->string('point')->default(0)->nullable();
             $table->timestamps();
         });
     }

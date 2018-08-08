@@ -13,7 +13,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Welcome
+                                Welcome to your Project Oblio Airdrop Dashboard
                             </h2>
                         </div>
                         <div class="body">
@@ -60,7 +60,7 @@
                                                 <td>{{ $current_user->created_at }}</td>
                                               </tr>
                                               <tr>
-                                                <td>Point</td>
+                                                <td>Karma</td>
                                                 <td>{{ $current_user->point }}</td>
                                               </tr>
                                             </tbody>
