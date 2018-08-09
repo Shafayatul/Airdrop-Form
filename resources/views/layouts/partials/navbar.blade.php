@@ -23,6 +23,9 @@
                             </li>
                             @endcan
                             <li>
+                                <a href="{{ url('/select-type') }}" ><i class="material-icons">autorenew</i>Change Type</a>
+                            </li>
+                            <li>
                                 <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" ><i class="material-icons">input</i>Sign Out</a>
                             </li>
                         </ul>
@@ -43,38 +46,32 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    @if($current_user->type=="anonymous")
-
-                    @elseif($current_user->type=="simple")
-
-
-                    @else
-
-                        <li>
-                            <a href="{{ url('/zeros/create') }}">
-                                <i class="material-icons">spellcheck</i>
-                                <span>Step 0 - Ethereum Address</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/ones/create') }}">
-                                <i class="material-icons">account_box</i>
-                                <span>Step 1 - Address verification</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/twos/create') }}">
-                                <i class="material-icons">assessment</i>
-                                <span>Step 2 - Medium Level</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/threes/create') }}">
-                                <i class="material-icons">perm_phone_msg</i>
-                                <span>Step 3 - Phone varification</span>
-                            </a>
-                        </li>
-
+                
+                    <li>
+                        <a href="{{ url('/zeros/create') }}">
+                            <i class="material-icons">spellcheck</i>
+                            <span>Step 0 - Ethereum Address</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/ones/create') }}">
+                            <i class="material-icons">account_box</i>
+                            <span>Step 1 - Address verification</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/twos/create') }}">
+                            <i class="material-icons">assessment</i>
+                            <span>Step 2 - Medium Level</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/threes/create') }}">
+                            <i class="material-icons">perm_phone_msg</i>
+                            <span>Step 3 - Phone varification</span>
+                        </a>
+                    </li>
+                    @if($current_user->type=="advance")   
                         <li>
                             <a href="{{ url('/fours/create') }}">
                                 <i class="material-icons">school</i>
