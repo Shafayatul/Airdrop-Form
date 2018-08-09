@@ -45,14 +45,14 @@ class HomeController extends Controller
         $user = User::find($id);
         $user->type = $type;
         $user->save();
-        $this->recount();
+        $this->recount($type);
         return redirect()->to('/home');
     }
 
-    public function recount()
+    public function recount($type)
     {
         $user = Auth::user();
-        if($user->type == 'advance'){
+        if($type == 'advance'){
             if((One::where('user_id', $user->id)->count() == 1) && (Two::where('user_id', $user->id)->count() == 1) && (Three::where('user_id', $user->id)->count() == 1) && (Four::where('user_id', $user->id)->count() == 1) && (Five::where('user_id', $user->id)->count() == 1) ){
 
 
