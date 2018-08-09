@@ -5,7 +5,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>Level Low Form</h2>
+                <h2>Address verification</h2>
             </div>
             <!-- Input -->
             <div class="row clearfix">
@@ -15,7 +15,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <h2>
-                                        Level Low Form
+                                        Address verification Info
                                     </h2>
                                 </div>
                                 <div class="col-sm-6 text-right">

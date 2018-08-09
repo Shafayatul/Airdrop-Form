@@ -8,6 +8,7 @@ use App\Mail\Welcome;
 use Illuminate\Support\Facades\Mail;
 use Socialite;
 use App\User;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -57,7 +58,7 @@ class LoginController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback(Request $request)
     {
         try {
             $user = Socialite::driver('google')->stateless()->user();
@@ -85,6 +86,7 @@ class LoginController extends Controller
             $newUser->email           = $user->email;
             $newUser->avatar          = $user->avatar;
             $newUser->password        = bcrypt(rand(100000,100000000));
+            $newUser->ip              = $request->ip();
             $newUser->save();
             auth()->login($newUser, true);
 

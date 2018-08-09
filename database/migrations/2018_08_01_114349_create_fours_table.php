@@ -25,6 +25,7 @@ class CreateFoursTable extends Migration
             $table->string('university_ambassadors')->nullable();
             $table->string('ethereum_address')->nullable();
             $table->string('point')->default(0)->nullable();
+            $table->string('ip')->nullable();
             $table->timestamps();
         });
     }

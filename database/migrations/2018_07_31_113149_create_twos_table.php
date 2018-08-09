@@ -20,6 +20,7 @@ class CreateTwosTable extends Migration
             $table->string('type');
             $table->string('number');
             $table->string('point')->default(0)->nullable();
+            $table->string('ip')->nullable();
             $table->timestamps();
         });
     }

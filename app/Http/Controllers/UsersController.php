@@ -25,7 +25,15 @@ class UsersController extends Controller
             'password_confirmation' => 'required_with:password|same:password|min:6'
         ]);
 
-        $user = User::create(['name' => $request->input('name'), 'email' => $request->input('email'), 'password' => bcrypt($request->input('password')), 'company' => $request->input('company'),'contact_number' => $request->input('contact_number')]);
+        $user = User::create(
+            [
+             'name'             => $request->input('name'),
+             'email'            => $request->input('email'),
+             'password'         => bcrypt($request->input('password')),
+             'company'          => $request->input('company'),
+             'contact_number'   => $request->input('contact_number'),
+             'ip'               => $request->ip()
+            ]);
         if($user){
             if(auth()->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])){
                 Mail::to($user->email)->send(new Welcome());

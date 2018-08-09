@@ -5,7 +5,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>Level Low Form</h2>
+                <h2>Address verification</h2>
             </div>
             <!-- Input -->
             <div class="row clearfix">
@@ -13,7 +13,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Insert Level Low Form
+                                Update Address verification Data
                             </h2>
                         </div>
                         <div class="body">

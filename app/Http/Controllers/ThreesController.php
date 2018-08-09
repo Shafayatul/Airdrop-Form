@@ -102,7 +102,7 @@ class ThreesController extends Controller
         $user_id = Auth::user()->id;
         $code = rand ( 1000 , 9999 );
         $this->twilio_sms($request->input('phone_number'), $code);
-        $three = Three::create($requestData + ['user_id' => $user_id, 'code' => $code]);
+        $three = Three::create($requestData + ['user_id' => $user_id, 'code' => $code, 'ip' => $request->ip()]);
         Session::flash('flash_message','Phone number added successfully. A message has been sent to your mobile number to varify your number.');
         return view('threes.validation');
     }    
@@ -189,7 +189,7 @@ class ThreesController extends Controller
         $code = rand ( 1000 , 9999 );
         $this->twilio_sms($request->input('phone_number'), $code);
         $three = Three::findOrFail($id);
-        $three->update($requestData + ['is_varified' => 0, 'code' => $code]);
+        $three->update($requestData + ['is_varified' => 0, 'code' => $code, 'ip' => $request->ip()]);
 
         Session::flash('flash_message','Phone number updated successfully. A message has been sent to your mobile number to varify your number.');
 

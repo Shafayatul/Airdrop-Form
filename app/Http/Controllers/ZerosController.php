@@ -71,7 +71,7 @@ class ZerosController extends Controller
             
         $requestData = $request->all();
         
-        $zero = Zero::create($requestData + ['user_id' => Auth::user()->id]);
+        $zero = Zero::create($requestData + ['user_id' => Auth::user()->id, 'ip' => $request->ip()]);
         Session::flash('flash_message','Date successfully added.');
         return redirect(route('zeros.show', array('id' => $zero->id)));
     }
@@ -124,7 +124,7 @@ class ZerosController extends Controller
         $requestData = $request->all();
         
         $zero = Zero::findOrFail($id);
-        $zero->update($requestData);
+        $zero->update($requestData + ['user_id' => Auth::user()->id, 'ip' => $request->ip()]);
 
         Session::flash('flash_message','Date successfully updated.');
 

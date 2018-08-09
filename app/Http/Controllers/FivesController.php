@@ -94,6 +94,7 @@ class FivesController extends Controller
         $five->video = $filename;
         $five->referral_emails = $request->referral_emails;
         $five->ethereum_address = $request->ethereum_address;
+        $five->ip = $request->ip();
         $five->save();
 
         $LastInsertId = $five->id;
@@ -179,6 +180,7 @@ class FivesController extends Controller
         }
         $five->referral_emails = $request->referral_emails;
         $five->ethereum_address = $request->ethereum_address;
+        $five->ip = $request->ip();
         $five->save();
 
         Session::flash('flash_message','Date successfully updated.');

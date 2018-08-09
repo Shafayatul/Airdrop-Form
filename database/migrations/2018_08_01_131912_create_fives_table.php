@@ -19,6 +19,7 @@ class CreateFivesTable extends Migration
             $table->string('video')->nullable();
             $table->string('referral_emails')->nullable();
             $table->string('point')->default(0)->nullable();
+            $table->string('ip')->nullable();
             $table->timestamps();
         });
     }

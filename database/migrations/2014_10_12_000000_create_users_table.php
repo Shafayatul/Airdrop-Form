@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('point')->default('0')->nullable();
             $table->integer('form_level')->default(0)->nullable();
+            $table->string('ip')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

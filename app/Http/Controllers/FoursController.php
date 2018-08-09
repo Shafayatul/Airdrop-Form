@@ -77,7 +77,7 @@ class FoursController extends Controller
         
         $requestData = $request->all();
         
-        $four = Four::create($requestData + ['user_id' => $user_id]);
+        $four = Four::create($requestData + ['user_id' => $user_id, 'ip' => $request->ip()]);
 
         $user = User::where('id', $user_id)->first();
         $current_point = $user->point;
@@ -129,6 +129,7 @@ class FoursController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user_id = Auth::id();
         $validatedData = $request->validate([
             'g-recaptcha-response' => 'required|captcha'
         ]);
@@ -136,7 +137,7 @@ class FoursController extends Controller
         $requestData = $request->all();
         
         $four = Four::findOrFail($id);
-        $four->update($requestData);
+        $four->update($requestData + ['user_id' => $user_id, 'ip' => $request->ip()]);
 
         Session::flash('flash_message','Date successfully updated.');
 

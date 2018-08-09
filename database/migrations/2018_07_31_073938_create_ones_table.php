@@ -23,6 +23,7 @@ class CreateOnesTable extends Migration
             $table->string('state')->nullable();
             $table->string('country')->nullable();
             $table->string('point')->default(0)->nullable();
+            $table->string('ip')->nullable();
             $table->timestamps();
         });
     }

@@ -25,7 +25,7 @@ class Three extends Model
      *
      * @var array
      */
-    protected $fillable = ['phone_number', 'code', 'user_id', 'code', 'is_varified'];
+    protected $fillable = ['phone_number', 'code', 'user_id', 'code', 'is_varified', 'ip'];
 
     
 }

@@ -70,7 +70,7 @@ class OnesController extends Controller
         ]);
         $requestData = $request->all();
         $user_id = Auth::user()->id;
-        $one = One::create($requestData + ['user_id' => $user_id]);
+        $one = One::create($requestData + ['user_id' => $user_id, 'ip' => $request->ip()]);
 
         $user = User::find($user_id);
         $user->point = 0.3;
@@ -119,6 +119,7 @@ class OnesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user_id = Auth::id();
         $validatedData = $request->validate([
             'g-recaptcha-response' => 'required|captcha',
             'name' => ["required"],
@@ -128,7 +129,7 @@ class OnesController extends Controller
         $requestData = $request->all();
         
         $one = One::findOrFail($id);
-        $one->update($requestData);
+        $one->update($requestData + ['user_id' => $user_id, 'ip' => $request->ip()]);
 
         Session::flash('flash_message','Date successfully updated.');
 

@@ -20,6 +20,7 @@ class CreateThreesTable extends Migration
             $table->string('code')->nullable();
             $table->boolean('is_varified')->default(0);
             $table->string('point')->default(0)->nullable();
+            $table->string('ip')->nullable();
             $table->timestamps();
         });
     }

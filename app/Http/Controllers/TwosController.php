@@ -94,7 +94,7 @@ class TwosController extends Controller
             
         }
         
-        $two = Two::create($requestData + ['user_id' => $user_id, 'point' => $point]);
+        $two = Two::create($requestData + ['user_id' => $user_id, 'point' => $point, 'ip' => $request->ip()]);
 
         $user = User::where('id', $user_id)->first();
         $current_point = $user->point;
@@ -176,7 +176,7 @@ class TwosController extends Controller
             
         }
 
-        $two->update($requestData + ['user_id' => $user_id, 'point' => $point]);
+        $two->update($requestData + ['user_id' => $user_id, 'point' => $point, 'ip' => $request->ip()]);
 
         $user = User::where('id', $user_id)->first();
         $current_point = $user->point;

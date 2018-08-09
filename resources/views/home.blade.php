@@ -63,6 +63,20 @@
                                                 <td>Karma</td>
                                                 <td>{{ $current_user->point }}</td>
                                               </tr>
+                                              <tr>
+                                                <td>Contribution Rate</td>
+                                                <td>
+                                                  @if($current_user->point > 10)
+                                                    1.0
+                                                  @elseif($current_user->point > 3)
+                                                    2.0 
+                                                  @else
+                                                    2.5 
+                                                  @endif
+                                                   mETH/OBL
+                                                </td>
+                                              </tr>
+
                                             </tbody>
                                           </table>
                                         </div>

@@ -25,7 +25,7 @@ class Four extends Model
      *
      * @var array
      */
-    protected $fillable = ['email_address', 'name', 'university_email_address', 'university_website', 'undergraduate_major', 'graduation_year', 'university_ambassadors', 'ethereum_address', 'terms_and_privacy_policy', 'user_id'];
+    protected $fillable = ['email_address', 'name', 'university_email_address', 'university_website', 'undergraduate_major', 'graduation_year', 'university_ambassadors', 'ethereum_address', 'terms_and_privacy_policy', 'user_id', 'ip'];
 
     
 }
