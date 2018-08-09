@@ -59,7 +59,7 @@
                         <li>
                             <a href="{{ url('/ones/create') }}">
                                 <i class="material-icons">account_box</i>
-                                <span>Step 1 - Low Level</span>
+                                <span>Step 1 - Address verification</span>
                             </a>
                         </li>
                         <li>

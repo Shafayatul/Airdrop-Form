@@ -25,7 +25,7 @@ class Five extends Model
      *
      * @var array
      */
-    protected $fillable = ['email_address', 'name', 'video', 'referral_emails', 'ethereum_address', 'user_id'];
+    protected $fillable = ['video', 'referral_emails', 'user_id'];
 
     
 }

@@ -2,9 +2,20 @@
 	<div class="col-sm-4 col-sm-offset-4 form-design">
 		{!! Form::label('name', 'Name', ['class' => 'control-label']) !!}
 		{!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required']) !!}
-		{!! Form::label('address', 'Address', ['class' => 'control-label']) !!}
-		{!! Form::text('address', null, ['class' => 'form-control', 'required' => 'required']) !!}
-
+		{!! Form::label('street', 'Street', ['class' => 'control-label']) !!}
+		{!! Form::text('street', null, ['class' => 'form-control', 'required' => 'required']) !!}
+		
+		{!! Form::label('city', 'City', ['class' => 'control-label']) !!}
+		{!! Form::text('city', null, ['class' => 'form-control', 'required' => 'required']) !!}
+		
+		{!! Form::label('zip', 'Zip Code', ['class' => 'control-label']) !!}
+		{!! Form::text('zip', null, ['class' => 'form-control', 'required' => 'required']) !!}
+		
+		{!! Form::label('state', 'State/Province', ['class' => 'control-label']) !!}
+		{!! Form::text('state', null, ['class' => 'form-control', 'required' => 'required']) !!}
+		
+		{!! Form::label('country', 'Country', ['class' => 'control-label']) !!}
+		{!! Form::text('country', null, ['class' => 'form-control', 'required' => 'required']) !!}
 		<br>
 		{!! NoCaptcha::renderJs() !!}
 		{!! NoCaptcha::display() !!}

@@ -52,7 +52,12 @@
                             <div class="table-responsive">
                                 <table class="table table-borderless">
                                     <tbody>
-                                        <tr><th> Name </th><td> {{ $one->name }} </td></tr><tr><th> Address </th><td> {{ $one->address }} </td></tr>
+                                        <tr><th> Name </th><td> {{ $one->name }} </td></tr>
+                                        <tr><th>Street</th><td> {{ $one->street}} </td> </tr>
+                                        <tr><th>City</th><td> {{ $one->city}} </td> </tr>
+                                        <tr><th>Zip Code</th> <td> {{ $one->zip}} </td> </tr>
+                                        <tr><th>State/Province<td> {{ $one->state}} </td> </tr>
+                                        <tr><th>Country</th><td> {{ $one->country}} </td> </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -65,3 +70,4 @@
         </div>
     </section>
 @endsection
+

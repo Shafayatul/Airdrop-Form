@@ -66,7 +66,7 @@ class OnesController extends Controller
         $validatedData = $request->validate([
             'g-recaptcha-response' => 'required|captcha',
             'name' => ["required"],
-            'address' => ["required"],
+            
         ]);
         $requestData = $request->all();
         $user_id = Auth::user()->id;
@@ -122,7 +122,7 @@ class OnesController extends Controller
         $validatedData = $request->validate([
             'g-recaptcha-response' => 'required|captcha',
             'name' => ["required"],
-            'address' => ["required"],
+            
         ]);
 
         $requestData = $request->all();

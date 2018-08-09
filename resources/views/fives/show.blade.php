@@ -15,7 +15,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <h2>
-                                        Info Selfie
+                                        You can also submit this video by Snapchat
                                     </h2>
                                 </div>
                                 <div class="col-sm-6 text-right">
@@ -53,7 +53,7 @@
                             <div class="table-responsive">
                                 <table class="table table-borderless">
                                     <tbody>
-                                        <tr><th> Email Address </th><td> {{ $five->email_address }} </td></tr><tr><th> Name </th><td> {{ $five->name }} </td></tr>
+                  
 
                                         <tr>
                                             <th> Video </th>
@@ -65,9 +65,6 @@
                                         </tr>
                                         <tr>
                                             <th>Referral emails</th><td>{{ $five->referral_emails }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Ethereum address</th><td>{{ $five->ethereum_address }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

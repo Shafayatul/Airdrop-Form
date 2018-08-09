@@ -18,16 +18,14 @@
 		{!! Form::label('graduation_year', 'Graduation Year', ['class' => 'control-label']) !!}
 		{!! Form::text('graduation_year', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
 
-		{!! Form::label('university_ambassadors', 'University Ambassadors', ['class' => 'control-label']) !!}
-		{!! Form::text('university_ambassadors', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
 
 		{!! Form::label('ethereum_address', 'Ethereum Address', ['class' => 'control-label']) !!}
 		{!! Form::text('ethereum_address', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
 
-		{{-- {!! Form::label('terms_and_privacy_policy', 'Terms and Privacy Policy * Do you understand and agree to the Project Oblio OBL Airdrop Terms and Privacy Policy listed here? http://projectoblio.com/2018/07/02/airdrop-terms-and-privacy-policy/', ['class' => 'control-label']) !!} --}}
+		<br>
+		<p><input id="university_ambassadors" type="checkbox" name="university_ambassadors" value="Yes">
+		<label for="university_ambassadors">Would you like to be University Ambassador?</label></p>
 
-		{{-- {!! Form::radio('', "Yes, I understand and agree to the Terms and Privacy Policy", true) !!} --}}
-		{{-- {!! Form::radio('terms_and_privacy_policy', "No, I do not agree to the Terms and Privacy Policy", false) !!} --}}
 
 		<br>
 		{!! NoCaptcha::renderJs() !!}

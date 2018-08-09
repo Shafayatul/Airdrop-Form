@@ -13,7 +13,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Insert Info Selfi
+                                You can also submit this video by Snapchat
                             </h2>
                         </div>
                         <div class="body">
