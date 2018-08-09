@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use Session;
 use Auth;
 use App\One;
+use App\Two;
+use App\Three;
+use App\Four;
+use App\Five;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -81,6 +85,42 @@ class OnesController extends Controller
 
     public function recount()
     {
+        $user = Auth::user();
+        if($user->type == 'advance'){
+            if((One::where('user_id', $user->id)->count() == 1) && (Two::where('user_id', $user->id)->count() == 1) && (Three::where('user_id', $user->id)->count() == 1) && (Four::where('user_id', $user->id)->count() == 1) && (Five::where('user_id', $user->id)->count() == 1) ){
+
+
+                $point = One::where('user_id', $user->id)->first()->point + Two::where('user_id', $user->id)->first()->point + Three::where('user_id', $user->id)->first()->point + Four::where('user_id', $user->id)->first()->point + Five::where('user_id', $user->id)->first()->point;
+
+                $update_user = User::find($user->id);
+                $update_user->point = $point;
+                $update_user->is_locked = 1;
+                $update_user->save();
+
+            }else{
+                $update_user = User::find($user->id);
+                $update_user->point = 0;
+                $update_user->is_locked = 0;
+                $update_user->save();
+            }
+        }else{
+            if((One::where('user_id', $user->id)->count() == 1) && (Two::where('user_id', $user->id)->count() == 1) && (Three::where('user_id', $user->id)->count() == 1) ){
+
+
+                $point = One::where('user_id', $user->id)->first()->point + Two::where('user_id', $user->id)->first()->point + Three::where('user_id', $user->id)->first()->point;
+
+                $update_user = User::find($user->id);
+                $update_user->point = $point;
+                $update_user->is_locked = 1;
+                $update_user->save();
+
+            }else{
+                $update_user = User::find($user->id);
+                $update_user->point = 0;
+                $update_user->is_locked = 0;
+                $update_user->save();
+            }
+        }
         
     }
 
@@ -135,6 +175,8 @@ class OnesController extends Controller
         $one->update($requestData + ['user_id' => $user_id, 'ip' => $request->ip()]);
 
         Session::flash('flash_message','Date successfully updated.');
+
+        $this->recount();
 
         return redirect(route('ones.show', array('id' => $one->id)));
     }

@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
+
 use App\User;
 use App\Mail\Welcome;
 use Illuminate\Support\Facades\Mail;
@@ -15,10 +16,7 @@ use Session;
 
 class UsersController extends Controller
 {
-    public function recount()
-    {
-        Session::flash('success','New user successfully createdeeeee.');
-    }
+
 
 
     public function store(Request $request)

@@ -61,7 +61,14 @@
                                               </tr>
                                               <tr>
                                                 <td>Karma</td>
-                                                <td>{{ $current_user->point }}</td>
+                                                <td>
+                                                  @if($current_user->point == 0)
+                                                    Pending
+                                                  @else
+                                                    {{ $current_user->point }}
+                                                  @endif
+
+                                                </td>
                                               </tr>
                                               <tr>
                                                 <td>Contribution Rate</td>

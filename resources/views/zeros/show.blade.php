@@ -19,11 +19,19 @@
                                     </h2>
                                 </div>
                                 <div class="col-sm-1 text-right">
-                                    <a href="{{ url('/zeros/' . $zero->id . '/edit') }}" title="Edit Zero">
+                                    @if($current_user->is_locked == 0)
+                                        <a href="{{ url('/zeros/' . $zero->id . '/edit') }}" title="Edit Zero">
+                                            <button class="btn btn-primary btn-sm">
+                                                <i class="material-icons">border_color</i> Edit
+                                            </button>
+                                        </a>
+                                    @else
+
                                         <button class="btn btn-primary btn-sm">
-                                            <i class="material-icons">border_color</i> Edit
+                                            <i class="material-icons">lock_open</i>
                                         </button>
-                                    </a>
+
+                                    @endif
                                 </div>
                             </div>
                             
