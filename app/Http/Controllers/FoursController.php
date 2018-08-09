@@ -77,20 +77,22 @@ class FoursController extends Controller
         
         $requestData = $request->all();
         
-        $four = Four::create($requestData + ['user_id' => $user_id, 'ip' => $request->ip()]);
+        $four = Four::create($requestData + ['user_id' => $user_id, 'ip' => $request->ip(), 'point' => 5]);
 
         $user = User::where('id', $user_id)->first();
         $current_point = $user->point;
 
-        $user = User::find($user_id);
-        $user->point = $current_point+5;
-        $user->save();
+        $this->recount();
 
         Session::flash('flash_message','Date successfully added.');
 
         return redirect(route('fours.show', array('id' => $four->id)));
     }
 
+    public function recount()
+    {
+
+    }
     /**
      * Display the specified resource.
      *
@@ -138,6 +140,8 @@ class FoursController extends Controller
         
         $four = Four::findOrFail($id);
         $four->update($requestData + ['user_id' => $user_id, 'ip' => $request->ip()]);
+
+        $this->recount();
 
         Session::flash('flash_message','Date successfully updated.');
 

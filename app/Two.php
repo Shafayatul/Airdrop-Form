@@ -25,7 +25,7 @@ class Two extends Model
      *
      * @var array
      */
-    protected $fillable = ['privacy', 'type', 'number', 'user_id', 'point', 'ip'];
+    protected $fillable = ['privacy', 'type', 'number', 'user_id', 'point', 'ip', 'point'];
 
     
 }

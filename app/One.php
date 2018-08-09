@@ -25,7 +25,7 @@ class One extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'user_id', 'street', 'city', 'zip', 'state', 'country', 'ip'];
+    protected $fillable = ['name', 'user_id', 'street', 'city', 'zip', 'state', 'country', 'ip', 'point'];
 
     
 }

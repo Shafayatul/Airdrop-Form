@@ -93,21 +93,21 @@ class TwosController extends Controller
             }
             
         }
-        
+        $point = round($point, 2);
         $two = Two::create($requestData + ['user_id' => $user_id, 'point' => $point, 'ip' => $request->ip()]);
 
-        $user = User::where('id', $user_id)->first();
-        $current_point = $user->point;
-
-        $user = User::find($user_id);
-        $user->point = $current_point+$point;
-        $user->save();
+        $this->recount();
 
         Session::flash('flash_message','Date successfully added.');
 
         Mail::to($user->email)->send(new AfterDubFromSubmitByAdvance($two));
 
         return redirect(route('twos.show', array('id' => $two->id)));
+    }
+
+    public function recount()
+    {
+
     }
 
     /**
@@ -156,6 +156,7 @@ class TwosController extends Controller
         $two = Two::findOrFail($id);
         $last_point = $two->point;
         $user_id = Auth::user()->id;
+        $user = Auth::user();
 
         $number = $request->number;
         if ($request->privacy == "Anonymous") {
@@ -176,14 +177,11 @@ class TwosController extends Controller
             
         }
 
+        $point = round($point, 2);
+
         $two->update($requestData + ['user_id' => $user_id, 'point' => $point, 'ip' => $request->ip()]);
 
-        $user = User::where('id', $user_id)->first();
-        $current_point = $user->point;
-
-        $user = User::find($user_id);
-        $user->point = $current_point+$point-$last_point;
-        $user->save();
+        $this->recount();
 
         Session::flash('flash_message','Date successfully updated.');
 

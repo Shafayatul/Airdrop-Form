@@ -70,15 +70,18 @@ class OnesController extends Controller
         ]);
         $requestData = $request->all();
         $user_id = Auth::user()->id;
-        $one = One::create($requestData + ['user_id' => $user_id, 'ip' => $request->ip()]);
+        $one = One::create($requestData + ['user_id' => $user_id, 'ip' => $request->ip(), 'point' => '0.3']);
 
-        $user = User::find($user_id);
-        $user->point = 0.3;
-        $user->save();
+        $this->recount();
 
         Session::flash('flash_message','Date successfully added.');
 
         return redirect(route('ones.show', array('id' => $one->id)));
+    }
+
+    public function recount()
+    {
+        
     }
 
     /**

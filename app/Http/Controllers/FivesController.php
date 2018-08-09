@@ -89,12 +89,10 @@ class FivesController extends Controller
         
         $five = new Five;
         $five->user_id = $user_id;
-        $five->email_address = $request->email_address;
-        $five->name = $request->name;
         $five->video = $filename;
         $five->referral_emails = $request->referral_emails;
-        $five->ethereum_address = $request->ethereum_address;
         $five->ip = $request->ip();
+        $five->point = 7;
         $five->save();
 
         $LastInsertId = $five->id;
@@ -103,13 +101,16 @@ class FivesController extends Controller
         $user = User::where('id', $user_id)->first();
         $current_point = $user->point;
 
-        $user = User::find($user_id);
-        $user->point = $current_point+7;
-        $user->save();
+        $this->recount();
+
         Session::flash('flash_message','Date successfully added.');
         return redirect(route('fives.show', array('id' => $LastInsertId)));
     }
 
+    public function recount()
+    {
+
+    }
     /**
      * Display the specified resource.
      *
@@ -173,15 +174,14 @@ class FivesController extends Controller
         }
         
         $five = Five::find($id);
-        $five->email_address = $request->email_address;
-        $five->name = $request->name;
         if ($filename !="") {
             $five->video = $filename;
         }
         $five->referral_emails = $request->referral_emails;
-        $five->ethereum_address = $request->ethereum_address;
         $five->ip = $request->ip();
         $five->save();
+
+        $this->recount();
 
         Session::flash('flash_message','Date successfully updated.');
 

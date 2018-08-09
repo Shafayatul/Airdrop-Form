@@ -113,9 +113,7 @@ class ThreesController extends Controller
         $three = Three::where('user_id', $user_id)->first();
         
         if($request->code == $three->code){
-            $three = Three::find($three->id);
-            $three->is_varified = 1;
-            $three->save();
+
 
 
             //*** VOIP varification still not done
@@ -129,10 +127,12 @@ class ThreesController extends Controller
                 $point = 5;
                 Session::flash('flash_message','Phone number is successfully varified.');
             }    
-            
-            $user = User::find($user_id);
-            $user->point = $current_point+$point;
-            $user->save();
+            $three = Three::find($three->id);
+            $three->is_varified = 1;
+            $three->point = $point;
+            $three->save();
+
+            $this->recount();
 
             return redirect(route('threes.show', array('id' => $three->id)));
         }else{
@@ -142,7 +142,11 @@ class ThreesController extends Controller
         
     }
 
+    public function recount()
+    {
 
+    }
+    
     /**
      * Display the specified resource.
      *

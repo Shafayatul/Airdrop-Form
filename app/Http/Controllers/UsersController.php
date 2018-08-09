@@ -15,6 +15,12 @@ use Session;
 
 class UsersController extends Controller
 {
+    public function recount()
+    {
+        Session::flash('success','New user successfully createdeeeee.');
+    }
+
+
     public function store(Request $request)
     {
 
