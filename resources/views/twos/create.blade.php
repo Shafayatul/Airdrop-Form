@@ -5,7 +5,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>Level Medium Form</h2>
+                <h2>DUBs</h2>
             </div>
             <!-- Input -->
             <div class="row clearfix">
@@ -13,7 +13,8 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Insert Level Medium Form
+				A DUB is a form of reCAPTCHA where you're asked to say a few random words derived from a recent block hash. You can submit your DUB so that it's encrypted (but still readable by Project Oblio for the purposes of the airdrop), or you can submit an unencrypted DUB to earn more OBL. 
+                                Submit DUBs through our online form, or (for a limited time), submit your DUBs by messaging 'project-oblio' on snapchat."
                             </h2>
                         </div>
                         <div class="body">

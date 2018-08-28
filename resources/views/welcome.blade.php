@@ -144,7 +144,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>Project</strong>  Oblio Airdrop</h1>
+                            <h1><strong>Project Oblio</strong> Distribution</h1>
                             <br>
                             {{-- <div class="description">
                                 <p>
@@ -184,7 +184,7 @@
                                             <form id="login-form" action="{{ route('login') }}" method="post" role="form" style="display: block;">
                                                 {{ csrf_field() }}
                                                 <div class="form-group">
-                                                    <input type="email" name="email" id="username" tabindex="1" class="form-control" placeholder="Email" value="">
+                                                    <input type="email" name="email" id="username" tabindex="1" class="form-control" placeholder="  Email" value="">
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
@@ -218,7 +218,7 @@
                                                     <input type="text" name="name" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="  Email" value="">
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
@@ -240,7 +240,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                   {{--
+			<div class="row">
                         <div class="col-sm-4 col-sm-offset-4 social-login">
                             <h3>...or login with:</h3>
                             <div class="social-login-buttons">
@@ -250,6 +251,7 @@
                             </div>
                         </div>
                     </div>
+		--}}
                 </div>
             </div>
             

@@ -28,7 +28,7 @@
 <body class="login-page">
     <div class="login-box">
         <div class="logo">
-            <a href="javascript:void(0);">Project Oblio Airdrop</a>
+            <a href="javascript:void(0);">Project Oblio Airdropppp</a>
             <small></small>
         </div>
         <div class="card">

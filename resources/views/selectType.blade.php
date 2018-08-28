@@ -28,7 +28,7 @@
 <body class="login-page">
     <div class="login-box">
         <div class="logo">
-            <a href="javascript:void(0);">Project Oblio Airdrop</a>
+            <a href="javascript:void(0);">Project Oblio Distribution</a>
             <small></small>
         </div>
         <div class="card">
@@ -36,7 +36,8 @@
 
 
             <div class="row">
-                <h3 class="text-center">Choose how you’ll earn and contribute to Project Oblio.</h3>
+                <h4 class="text-center">Choose how you’ll collect Arrows (ARR), the currency used on Project Oblio, <br>and <b>Karma</b>, a metric of uniqueness used for voting.</h4>
+                <br>
                 <hr>
                 <div class="col-xs-12">
                     <a href="{{url('/save-type/anonymous')}}">
@@ -48,9 +49,9 @@
                                 <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20">ANONYMOUS</div>
                                 <div class="text">
                                     <br>
-                                    10 OBL Free. 2.5 mETH/OBL contribution rate.
+                                    2.5 mETH to ARR contribution rate.
                                     <br>
-                                    E-mail, anonymized DUBs
+				    Only an Ethereum address is required.
                                 </div>
                                 
                             </div>
@@ -66,15 +67,15 @@
                             <div class="content">
                                 <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20">SIMPLE</div>
                                 <div class="text">
-                                    3 Karma and 300 OBL Free. 2.0 mETH/OBL contribution rate
                                     <br>
-                                    Phone, e-mail, anonymized DUBs
-                                </div>
+						Earn 300 ARR and 10 Karma for posting on IRT.
+                                    <br> Phone verification and DUBs required.
                                 
                             </div>
                         </div>
                     </a>
                 </div>
+		</div>
                 <div class="col-xs-12">
                     <a href="{{url('/save-type/advance')}}">
                         <div class="info-box bg-cyan hover-expand-effect">
@@ -82,27 +83,28 @@
                                 <i class="material-icons">how_to_reg</i>
                             </div>
                             <div class="content">
-                                <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20">ADVANCE</div>
-                                <div class="text">
-                                    10 Karma. 800 OBL Free. 1.0 mETH/OBL contribution rate
-                                    <br>
-                                    Full identification needed.
+                                <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20">ADVANCED</div>
+                                <div class="text"><br>
+					Earn ARR and Karma for your Insta, Snap, and Reddit accounts.
+					
                                 </div>
                             </div>
                         </div>
                     </a>
+	
                 </div>
 
+            </div>
+		<h5 class="text-center">You'll be able to change your account type later.</h5>
+
+
+
+
+
+
 
             </div>
 
-
-
-
-
-
-
-            </div>
         </div>
     </div>
 

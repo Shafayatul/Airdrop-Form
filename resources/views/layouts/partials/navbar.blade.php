@@ -46,45 +46,95 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
+			<li>
+			<a href="{{ url('/select-type') }}">
+				<i class="material-icons">autorenew</i>
+				<span>Change Account Type</span>
+
+			</a>
+			</li>
                 
                     <li>
                         <a href="{{ url('/zeros/create') }}">
                             <i class="material-icons">spellcheck</i>
-                            <span>Step 0 - Ethereum Address</span>
+                            <span>Ethereum Address</span>
                         </a>
                     </li>
+                    @if($current_user->type=="simple"||$current_user->type=="advance")   
+			<li class="header">SIMPLE VERIFICATIONS </li>
+			<ul>
                     <li>
                         <a href="{{ url('/ones/create') }}">
                             <i class="material-icons">account_box</i>
-                            <span>Step 1 - Address verification</span>
+                            <span>Home Address</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url('/twos/create') }}">
                             <i class="material-icons">assessment</i>
-                            <span>Step 2 - Medium Level</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/threes/create') }}">
-                            <i class="material-icons">perm_phone_msg</i>
-                            <span>Step 3 - Phone varification</span>
-                        </a>
-                    </li>
+                        	    <span>DUBs</span>
+                	        </a>
+               	     </li>
+        	            <li>
+        	                <a href="{{ url('/threes/create') }}">
+        	                    <i class="material-icons">perm_phone_msg</i>
+                            <span>Phone Verification</span>
+       	                 </a>
+     	               </li>
+			</ul>
+
+
+			@endif
                     @if($current_user->type=="advance")   
+
+			 <li class="header">ADVANCED VERIFICATIONS</li>
+				<ul>
+			
+			 <li>
+                            <a href="{{ url('/fives/create') }}">
+                                <i class="material-icons">camera_roll</i>
+                                <span>IRT Activity</span>
+                            </a>
+                        </li>
+
+
                         <li>
-                            <a href="{{ url('/fours/create') }}">
-                                <i class="material-icons">school</i>
-                                <span>Step 3 - University varification</span>
+                            <a href="{{ url('/fives/create') }}">
+                                <i class="material-icons">camera_roll</i>
+                                <span>Snap Score</span>
+                            </a>
+                        </li>
+			<li>
+                            <a href="{{ url('/fives/create') }}">
+                                <i class="material-icons">camera_roll</i>
+                                <span>Insta Followers</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="{{ url('/fives/create') }}">
                                 <i class="material-icons">camera_roll</i>
-                                <span>Step 4 - Selfi varification</span>
+                                <span>Reddit Karma</span>
                             </a>
                         </li>
+			</ul>
+			<li class="header">LEGACY VERIFICATIONS</li>
+                                <ul>
+                        <li>
+                            <a href="{{ url('/fives/create') }}">
+                                <i class="material-icons">camera_roll</i>
+                                <span>Selfie verification</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/fours/create') }}">
+                                <i class="material-icons">school</i>
+                                <span>University verification</span>
+                            </a>
+                        </li>
+			</li>
+			</ul>
+
                     @endif
 
                     
