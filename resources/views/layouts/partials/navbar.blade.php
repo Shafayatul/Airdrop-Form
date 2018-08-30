@@ -4,7 +4,7 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    
+
                     @if($current_user->avatar == null)
                         <img src="{{ URL::asset('images/user.png') }}" width="48" height="48" alt="User" />
                     @else
@@ -53,14 +53,14 @@
 
 			</a>
 			</li>
-                
+
                     <li>
                         <a href="{{ url('/zeros/create') }}">
                             <i class="material-icons">spellcheck</i>
                             <span>Ethereum Address</span>
                         </a>
                     </li>
-                    @if($current_user->type=="simple"||$current_user->type=="advance")   
+                    @if($current_user->type=="simple"||$current_user->type=="advance")
 			<li class="header">SIMPLE VERIFICATIONS </li>
 			<ul>
                     <li>
@@ -85,11 +85,11 @@
 
 
 			@endif
-                    @if($current_user->type=="advance")   
+                    @if($current_user->type=="advance")
 
 			 <li class="header">ADVANCED VERIFICATIONS</li>
 				<ul>
-			
+
 			 <li>
                             <a href="{{ url('/fives/create') }}">
                                 <i class="material-icons">camera_roll</i>
@@ -133,11 +133,24 @@
                             </a>
                         </li>
 			</li>
+
+			</ul>
+            <li class="header">OAUTH CLIENTS</li>
+                <ul>
+                    <li>
+                        <a href="{{ url('/oauth-clients') }}">
+                            <i class="material-icons">security</i>
+                            <span>Oauth Clients</span>
+                        </a>
+                    </li>
+                </ul>
+			</li>
+
 			</ul>
 
                     @endif
 
-                    
+
                 </ul>
             </div>
         </aside>

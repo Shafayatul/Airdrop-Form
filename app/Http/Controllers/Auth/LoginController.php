@@ -78,7 +78,7 @@ class LoginController extends Controller
             if ($existingUser->type == null) {
                 return redirect()->to('/select-type');
             }
-            
+
         } else {
             // create a new user
             $newUser                  = new User;
