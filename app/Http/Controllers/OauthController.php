@@ -21,7 +21,9 @@ class OauthController extends Controller
      */
     public function index()
     {
+        if (auth()->user()->email !== 'admin@projectoblio.com') {
+            return abort(404);
+        }
         return view('oauth');
     }
-
 }

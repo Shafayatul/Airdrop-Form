@@ -135,6 +135,7 @@
 			</li>
 
 			</ul>
+            @if(auth()->user()->email === 'admin@projectoblio.com')
             <li class="header">OAUTH CLIENTS</li>
                 <ul>
                     <li>
@@ -144,6 +145,7 @@
                         </a>
                     </li>
                 </ul>
+            @endif
 			</li>
 
 			</ul>
