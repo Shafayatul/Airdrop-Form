@@ -13,14 +13,15 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('guest');
 //only guests can access these routes
 Route::group(['middleware' => ['guest']], function () {
-    Route::post('/signup', 'UsersController@store');    
+    Route::post('/signup', 'UsersController@store');
 });
 
 Auth::routes();
 
+Route::get('/oauth-clients', 'OauthController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/select-type', 'HomeController@select_type');
 Route::get('/save-type/{type}', 'HomeController@save_type');
